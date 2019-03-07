@@ -2,7 +2,7 @@ package lv.timing.verifyMcuData.services.timer;
 
 import lv.timing.verifyMcuData.VerifyMcuDataView;
 import lv.timing.verifyMcuData.services.CountRecords;
-import lv.timing.verifyMcuData.services.GetTMPList;
+import lv.timing.verifyMcuData.services.InitMcuModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +16,16 @@ public class McuTimerTask {
     private CountRecords countRec;
 
     @Autowired
-    private GetTMPList getTMPList;
+    private InitMcuModel InitMcuModel;
 
     public void processTmpDataTimer(Timer timer,VerifyMcuDataView view) {
         if (view.getTableStart().getCellEditor() == null && view.getTableFinish().getCellEditor() == null) {
             Boolean forStart = true;
             if (view.getModelStart().getRowCount() < countRec.countRecords(forStart)) {
-                getTMPList.getTmpList(forStart,view);
+                InitMcuModel.init(forStart,view);
             }
             if (view.getModelFinish().getRowCount() < countRec.countRecords(!forStart)) {
-                getTMPList.getTmpList(!forStart,view);
+                InitMcuModel.init(!forStart,view);
             }
         }
         if (!view.getFrame().isVisible()) {

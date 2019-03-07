@@ -11,10 +11,10 @@ public class RefreshRaceConfigModel {
     private RaceConfigView view;
 
     @Autowired
-    private GetRaceConfigList getList;
+    private InitRaceConfigModel getList;
 
     public void refresh(){
         view.getModel().setRowCount(0);
-        getList.execute(view);
+        getList.init(view);
     }
 }

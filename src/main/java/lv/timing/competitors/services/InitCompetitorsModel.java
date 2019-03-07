@@ -10,12 +10,12 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetCompetitorsList {
+public class InitCompetitorsModel {
 
     @Autowired
     private CompetitorRepository database;
 
-    public void getCompetitorsList(CompetitorsView view) {
+    public void init(CompetitorsView view) {
         try {
             view.getModel().setRowCount(0);
             List<Competitor> competitorList = database.competitorList();

@@ -4,7 +4,7 @@ import lv.timing.genericServices.InitCBoxEvent;
 import lv.timing.genericServices.InitCBoxSubEvent;
 import lv.timing.mainWindow.MainWindowView;
 import lv.timing.race.teamRace.services.DeleteTeamRaceRow;
-import lv.timing.race.teamRace.services.GetTeamRaceList;
+import lv.timing.race.teamRace.services.InitTeamRaceModel;
 import lv.timing.race.teamRace.services.UpdateValuesTeamRace;
 import lv.timing.race.teamRace.services.timer.TeamTimer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class TeamRaceController {
     private InitCBoxSubEvent initCBoxSubEvent;
 
     @Autowired
-    private GetTeamRaceList getTeamRaceList;
+    private InitTeamRaceModel initTeamRaceModel;
 
     @Autowired
     private UpdateValuesTeamRace update;

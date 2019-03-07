@@ -4,7 +4,7 @@ import lv.timing.genericServices.InitCBoxEvent;
 import lv.timing.genericServices.InitCBoxSubEvent;
 import lv.timing.mainWindow.MainWindowView;
 import lv.timing.race.singleRace.services.DeleteSingleRaceRow;
-import lv.timing.race.singleRace.services.GetSingleRaceList;
+import lv.timing.race.singleRace.services.InitSingleRaceModel;
 import lv.timing.race.singleRace.services.UpdateValuesSingleRace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,7 +26,7 @@ public class EditSingleRaceController {
     private InitCBoxSubEvent initCBoxSubEvent;
 
     @Autowired
-    private GetSingleRaceList getSingleRaceList;
+    private InitSingleRaceModel initSingleRaceModel;
 
     @Autowired
     private UpdateValuesSingleRace update;
@@ -39,7 +39,7 @@ public class EditSingleRaceController {
         view.formatTable(view.getModel());
         view.getModel().addTableModelListener(tme -> update.execute(tme, view));
         view.getComboBoxEvent().addActionListener(e -> initCBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
-        view.getComboBoxSubEvent().addActionListener(e -> getSingleRaceList.getSingleRaceList(true, view));
+        view.getComboBoxSubEvent().addActionListener(e -> initSingleRaceModel.init(true, view));
         view.getBtnDeleteRow().addActionListener(e -> delete.execute(view));
     }
 

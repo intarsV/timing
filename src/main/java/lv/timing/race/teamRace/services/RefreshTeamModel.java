@@ -11,10 +11,10 @@ public class RefreshTeamModel {
     private TeamRaceView view;
 
     @Autowired
-    private GetTeamRaceList getList;
+    private InitTeamRaceModel getList;
 
     public void updateModel() {
         view.getModel().setRowCount(0);
-        getList.getTeamRaceList(false, view);
+        getList.init(false, view);
     }
 }

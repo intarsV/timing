@@ -20,7 +20,7 @@ public class InsertEvent {
     private CompetitionEventRepository database;
 
     @Autowired
-    private GetEventList getEventList;
+    private InitEventModel InitEventModel;
 
     @Autowired
     private EventSingleRegistryView viewSingleRegistry;
@@ -36,7 +36,7 @@ public class InsertEvent {
         CompetitionEvent competitionEvent = new CompetitionEvent(valueList);
 
         database.addEvent(competitionEvent);
-        getEventList.getCompetitionEventList(view);
+        InitEventModel.init(view);
         resetTextBoxes(view);
         initEvent.init(viewSingleRegistry.getComboBoxEvent());
     }

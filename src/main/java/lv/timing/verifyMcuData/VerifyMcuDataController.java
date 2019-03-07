@@ -1,7 +1,7 @@
 package lv.timing.verifyMcuData;
 
 import lv.timing.mainWindow.MainWindowView;
-import lv.timing.verifyMcuData.services.GetTMPList;
+import lv.timing.verifyMcuData.services.InitMcuModel;
 import lv.timing.verifyMcuData.services.UpdateFinish;
 import lv.timing.verifyMcuData.services.UpdateStart;
 import lv.timing.verifyMcuData.services.timer.McuTimer;
@@ -28,7 +28,7 @@ public class VerifyMcuDataController {
     private McuTimer timer;
 
     @Autowired
-    private GetTMPList getTMPList;
+    private InitMcuModel InitMcuModel;
 
     @PostConstruct
     public void init() {
@@ -47,8 +47,8 @@ public class VerifyMcuDataController {
     }
 
     private void initAcceptIncomingView() {
-        getTMPList.getTmpList(true, view);
-        getTMPList.getTmpList(false, view);
+        InitMcuModel.init(true, view);
+        InitMcuModel.init(false, view);
         view.getFrame().setVisible(true);
 
         JDesktopPane desktop = MainWindowView.getDesktop();

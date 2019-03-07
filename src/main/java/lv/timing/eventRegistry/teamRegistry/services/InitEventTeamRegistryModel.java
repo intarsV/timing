@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetEventTeamRegistry {
+public class InitEventTeamRegistryModel {
 
     @Autowired
     private EventTeamRegistryView view;
@@ -20,7 +20,7 @@ public class GetEventTeamRegistry {
     @Autowired
     private TeamEventRegistryRepository database;
 
-    public void execute() {
+    public void init() {
         if (view.getComboBoxEvent().getSelectedIndex() > 0) {
             try {
                 view.getModel().setRowCount(0);

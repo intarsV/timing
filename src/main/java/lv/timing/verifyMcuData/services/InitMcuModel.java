@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
 @Service
-public class GetTMPList {
+public class InitMcuModel {
 
     @Autowired
     private VerifyMcuDataRepository database;
 
-    public void getTmpList(boolean forStart,VerifyMcuDataView view) {
+    public void init(boolean forStart, VerifyMcuDataView view) {
         if (forStart) {
             try {
                 view.getModelStart().setRowCount(0);

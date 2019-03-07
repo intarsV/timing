@@ -5,7 +5,7 @@ import lv.timing.genericServices.InitCBoxSingleBoatClass;
 import lv.timing.mainWindow.MainWindowView;
 import lv.timing.raceConfig.services.AddRaceConfig;
 import lv.timing.raceConfig.services.DeleteRaceConfig;
-import lv.timing.raceConfig.services.GetRaceConfigList;
+import lv.timing.raceConfig.services.InitRaceConfigModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,12 +32,12 @@ public class RaceConfigController {
     private DeleteRaceConfig delete;
 
     @Autowired
-    private GetRaceConfigList getList;
+    private InitRaceConfigModel getList;
 
     @PostConstruct
     public void init() {
         view.formatTable();
-        view.getComboBoxEvent().addActionListener(e -> getList.execute(view));
+        view.getComboBoxEvent().addActionListener(e -> getList.init(view));
         view.getBtnInsert().addActionListener(e -> add.execute(view));
         view.getBtnDelete().addActionListener(e -> delete.execute(view));
     }

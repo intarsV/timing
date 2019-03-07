@@ -5,7 +5,7 @@ import lv.timing.genericServices.InitCBoxSubEvent;
 import lv.timing.mainWindow.MainWindowView;
 import lv.timing.race.singleRace.services.AddListener;
 import lv.timing.race.singleRace.services.DeleteSingleRaceRow;
-import lv.timing.race.singleRace.services.GetSingleRaceList;
+import lv.timing.race.singleRace.services.InitSingleRaceModel;
 import lv.timing.race.singleRace.services.UpdateValuesSingleRace;
 import lv.timing.race.singleRace.services.timer.SingleTimer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ public class SingleRaceController {
     private InitCBoxSubEvent initCBoxSubEvent;
 
     @Autowired
-    private GetSingleRaceList getSingleRaceList;
+    private InitSingleRaceModel initSingleRaceModel;
 
     @Autowired
     private UpdateValuesSingleRace update;

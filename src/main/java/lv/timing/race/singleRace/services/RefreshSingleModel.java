@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 public class RefreshSingleModel {
 
     @Autowired
-    private GetSingleRaceList getList;
+    private InitSingleRaceModel getList;
 
     public void updateModel(SingleRaceView view) {
         view.getModel().setRowCount(0);
-        getList.getSingleRaceList(false, view);
+        getList.init(false, view);
     }
 }

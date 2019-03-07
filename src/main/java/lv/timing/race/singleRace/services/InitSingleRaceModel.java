@@ -14,12 +14,12 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetSingleRaceList {
+public class InitSingleRaceModel {
 
     @Autowired
     private SingleRaceRepository database;
 
-    public void getSingleRaceList(boolean isEditMode, SingleView view) {
+    public void init(boolean isEditMode, SingleView view) {
         JComboBox cBoxEvent = view.getComboBoxEvent();
         JComboBox cBoxSubEvent = view.getComboBoxSubEvent();
 

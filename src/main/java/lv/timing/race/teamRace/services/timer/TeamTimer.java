@@ -1,7 +1,7 @@
 package lv.timing.race.teamRace.services.timer;
 
 import lv.timing.race.teamRace.processTeamRace.TeamRaceView;
-import lv.timing.race.teamRace.services.GetTeamRaceList;
+import lv.timing.race.teamRace.services.InitTeamRaceModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.TimerTask;
 public class TeamTimer {
 
     @Autowired
-    private GetTeamRaceList getTeamRaceList;
+    private InitTeamRaceModel initTeamRaceModel;
 
     @Autowired
     private TeamTimerTask teamTimerTask;
@@ -21,8 +21,8 @@ public class TeamTimer {
         if (view.getComboBoxEvent().getSelectedIndex() > 0 && view.getComboBoxSubEvent().getSelectedIndex() > 0) {
 //            competitionEvent = getObject();
 //            subEvent = getSubEventObjectFromSelection();
-            getTeamRaceList.getTeamRaceList(false,view);
-        //    getTeamRaceList();
+            initTeamRaceModel.init(false,view);
+        //    initTeamRaceModel();
             Timer timerProcess = new Timer();
             TimerTask tTaskProcess = new TimerTask() {
                 public void run() {

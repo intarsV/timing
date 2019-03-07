@@ -22,7 +22,7 @@ public class AddCompetitor {
     private CompetitorValidator validator;
 
     @Autowired
-    private GetCompetitorsList refresh;
+    private InitCompetitorsModel refresh;
 
     public void execute(CompetitorsView view) {
         List<Object> valueList = Arrays.asList(view.getTextFieldName().getText()
@@ -35,7 +35,7 @@ public class AddCompetitor {
         if (errors.isEmpty()) {
             Competitor competitor = new Competitor(valueList);
             database.addCompetitor(competitor);
-            refresh.getCompetitorsList(view);
+            refresh.init(view);
             resetTextBoxes(view);
         } else {
             JOptionPane.showMessageDialog(null, errors.get(0).getDescription());

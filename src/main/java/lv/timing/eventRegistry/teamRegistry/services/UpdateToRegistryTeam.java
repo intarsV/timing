@@ -18,7 +18,7 @@ public class UpdateToRegistryTeam {
     private TeamEventRegistryRepository database;
 
     @Autowired
-    private GetEventTeamRegistry refreshModel;
+    private InitEventTeamRegistryModel refreshModel;
 
     public void execute() {
         int row = view.getResultTable().getSelectedRow();
@@ -36,7 +36,7 @@ public class UpdateToRegistryTeam {
             //  if (errors.isEmpty()) {
             database.updateEventTeamRegistry(eventTeamRegistry);
             GenerateNextBibTeam.generateNextBib(view);
-            refreshModel.execute();
+            refreshModel.init();
 
             view.getComboBoxCompetitorOne().setSelectedIndex(-1);
             view.getComboBoxCompetitorTwo().setSelectedIndex(-1);

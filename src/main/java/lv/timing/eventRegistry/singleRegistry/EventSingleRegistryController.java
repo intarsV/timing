@@ -44,7 +44,7 @@ public class EventSingleRegistryController {
     private UpdateToRegistry update;
 
     @Autowired
-    private GetEventSingleRegistry refreshModel;
+    private InitEventSingleRegistryModel refreshModel;
 
     @Autowired
     private CompetitionEventController eventController;
@@ -55,7 +55,7 @@ public class EventSingleRegistryController {
     @PostConstruct
     public void init() {
         view.formatTable();
-        view.getComboBoxEvent().addActionListener(e -> refreshModel.execute());
+        view.getComboBoxEvent().addActionListener(e -> refreshModel.init());
         view.getBtnInsert().addActionListener(e -> add.execute());
         view.getBtnDelete().addActionListener(e -> delete.execute());
         view.getBtnUpdate().addActionListener(e -> update.execute());

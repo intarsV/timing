@@ -24,7 +24,7 @@ public class AddToSingleRegistry {
     private EventSingleRegistryInsertValidator insertValidator;
 
     @Autowired
-    private GetEventSingleRegistry refreshModel;
+    private InitEventSingleRegistryModel refreshModel;
 
 
     public void execute() {
@@ -36,7 +36,7 @@ public class AddToSingleRegistry {
             EventSingleRegistry eventSingleRegistry = new EventSingleRegistry(valueList);
             database.saveEventSingleRegistry(eventSingleRegistry);
             GenerateNextBib.generateNextBib(view);
-            refreshModel.execute();
+            refreshModel.init();
             view.getComboBoxCompetitor().setSelectedIndex(-1);
         } else {
             JOptionPane.showMessageDialog(null, errors.get(0).getDescription());

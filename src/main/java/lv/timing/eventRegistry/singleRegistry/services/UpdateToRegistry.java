@@ -26,7 +26,7 @@ public class UpdateToRegistry {
     private EventSingleRegistryUpdateValidator updateValidator;
 
     @Autowired
-    private GetEventSingleRegistry refreshModel;
+    private InitEventSingleRegistryModel refreshModel;
 
     public void execute() {
         int row = view.getTable().getSelectedRow();
@@ -43,7 +43,7 @@ public class UpdateToRegistry {
             if (errors.isEmpty()) {
                 database.updateEventSingleRegistry(eventSingleRegistry);
                 GenerateNextBib.generateNextBib(view);
-                refreshModel.execute();
+                refreshModel.init();
                 view.getComboBoxCompetitor().setSelectedIndex(-1);
             } else {
                 JOptionPane.showMessageDialog(null, errors.get(0).getDescription());

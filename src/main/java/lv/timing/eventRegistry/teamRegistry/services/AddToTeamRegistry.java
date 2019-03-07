@@ -18,7 +18,7 @@ public class AddToTeamRegistry {
     private EventTeamRegistryView view;
 
     @Autowired
-    private GetEventTeamRegistry refreshModel;
+    private InitEventTeamRegistryModel refreshModel;
 
     public void execute() {
         List<Object> valueList = GetObjectsFromCBoxesTeam.getObjects(view);
@@ -36,7 +36,7 @@ public class AddToTeamRegistry {
         EventTeamRegistry eventTeamRegistry = new EventTeamRegistry(valueList);
         database.saveEventTeamRegistry(eventTeamRegistry);
         GenerateNextBibTeam.generateNextBib(view);
-        refreshModel.execute();
+        refreshModel.init();
         view.getComboBoxCompetitorOne().setSelectedIndex(-1);
         view.getComboBoxCompetitorTwo().setSelectedIndex(-1);
         view.getComboBoxCompetitorThree().setSelectedIndex(-1);

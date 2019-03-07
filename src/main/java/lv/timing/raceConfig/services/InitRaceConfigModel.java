@@ -12,12 +12,12 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetRaceConfigList {
+public class InitRaceConfigModel {
 
     @Autowired
     private RaceConfigRepository database;
 
-    public void execute(RaceConfigView view) {
+    public void init(RaceConfigView view) {
         if (view.getComboBoxEvent().getSelectedIndex() > 0) {
             try {
                 view.getModel().setRowCount(0);

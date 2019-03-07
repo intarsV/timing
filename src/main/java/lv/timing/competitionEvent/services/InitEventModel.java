@@ -10,12 +10,12 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetEventList {
+public class InitEventModel {
 
     @Autowired
     private CompetitionEventRepository database;
 
-    public void getCompetitionEventList(CompetitionEventView view) {
+    public void init(CompetitionEventView view) {
         try {
             view.getModel().setRowCount(0);
             List<CompetitionEvent> eventList = database.eventList();

@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetEventSingleRegistry {
+public class InitEventSingleRegistryModel {
 
     @Autowired
     private EventSingleRegistryView view;
@@ -20,7 +20,7 @@ public class GetEventSingleRegistry {
     @Autowired
     private SingleEventRegistryRepository database;
 
-    public void execute() {
+    public void init() {
         if (view.getComboBoxEvent().getSelectedIndex() > 0) {
             try {
                 view.getModel().setRowCount(0);

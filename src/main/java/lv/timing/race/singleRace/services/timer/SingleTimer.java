@@ -1,7 +1,7 @@
 package lv.timing.race.singleRace.services.timer;
 
 import lv.timing.race.singleRace.processSingleRace.SingleRaceView;
-import lv.timing.race.singleRace.services.GetSingleRaceList;
+import lv.timing.race.singleRace.services.InitSingleRaceModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +12,14 @@ import java.util.TimerTask;
 public class SingleTimer {
 
     @Autowired
-    private GetSingleRaceList getSingleRaceList;
+    private InitSingleRaceModel initSingleRaceModel;
 
     @Autowired
     private SingleTimerTask singleTimerTask;
 
     public void timer(SingleRaceView view) {
         if (view.getComboBoxEvent().getSelectedIndex() > 0 && view.getComboBoxSubEvent().getSelectedIndex() > 0) {
-            getSingleRaceList.getSingleRaceList(false, view);
+            initSingleRaceModel.init(false, view);
             Timer timerProcess = new Timer();
             TimerTask tTaskProcess = new java.util.TimerTask() {
                 public void run() {

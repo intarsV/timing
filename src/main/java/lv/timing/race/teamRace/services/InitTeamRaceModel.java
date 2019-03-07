@@ -14,12 +14,12 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class GetTeamRaceList {
+public class InitTeamRaceModel {
 
     @Autowired
     private TeamRaceRepository database;
 
-    public void getTeamRaceList(boolean isEditMode, TeamView view) {
+    public void init(boolean isEditMode, TeamView view) {
         JComboBox cBoxEvent = view.getComboBoxEvent();
         JComboBox cBoxSubEvent = view.getComboBoxSubEvent();
 

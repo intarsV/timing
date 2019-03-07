@@ -5,7 +5,7 @@ import lv.timing.genericServices.InitCBoxEvent;
 import lv.timing.genericServices.InitCBoxSubEvent;
 import lv.timing.mainWindow.MainWindowView;
 import lv.timing.race.teamRace.services.DeleteTeamRaceRow;
-import lv.timing.race.teamRace.services.GetTeamRaceList;
+import lv.timing.race.teamRace.services.InitTeamRaceModel;
 import lv.timing.race.teamRace.services.UpdateValuesTeamRace;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,7 +27,7 @@ public class EditTeamRaceController {
     private InitCBoxSubEvent initComboBoxSubEvent;
 
     @Autowired
-    private GetTeamRaceList getTeamRaceList;
+    private InitTeamRaceModel initTeamRaceModel;
 
     @Autowired
     private UpdateValuesTeamRace update;
@@ -39,7 +39,7 @@ public class EditTeamRaceController {
     public void init() {
         view.formatTable(view.getModel());
         view.getComboBoxEvent().addActionListener(e -> initComboBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
-        view.getComboBoxSubEvent().addActionListener(e -> getTeamRaceList.getTeamRaceList(true, view));
+        view.getComboBoxSubEvent().addActionListener(e -> initTeamRaceModel.init(true, view));
         view.getBtnDeleteRow().addActionListener(e -> delete.execute(view));
         view.getModel().addTableModelListener(tme -> update.execute(tme, view));
     }
