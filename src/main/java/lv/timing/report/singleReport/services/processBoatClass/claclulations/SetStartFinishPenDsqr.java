@@ -1,7 +1,7 @@
 package lv.timing.report.singleReport.services.processBoatClass.claclulations;
 
 import lv.timing.domain.SingleRace;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 
 public class SetStartFinishPenDsqr {
 

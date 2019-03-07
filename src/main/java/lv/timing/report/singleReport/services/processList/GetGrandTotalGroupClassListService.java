@@ -1,9 +1,9 @@
 package lv.timing.report.singleReport.services.processList;
 
 import lv.timing.domain.CompetitionEvent;
-import lv.timing.domain.reportDomain.GrandTotalList;
-import lv.timing.domain.reportDomain.MergedList;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.GrandTotalList;
+import lv.timing.domain.reportDomain.single.MergedList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.report.singleReport.services.jasperFrame.CreateGrandTotal;
 import lv.timing.report.singleReport.services.jasperFrame.CreateGrandTotalFormatOneAndFourFrame;
 import lv.timing.report.singleReport.services.processBoatClass.convert.*;

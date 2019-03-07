@@ -3,7 +3,7 @@ package lv.timing.report.singleReport.services.processBoatClass;
 import lv.timing.domain.CompetitionEvent;
 import lv.timing.domain.EventSingleRegistry;
 import lv.timing.domain.SingleBoatClass;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.report.singleReport.services.processBoatClass.claclulations.RankList;
 import lv.timing.report.singleReport.services.processBoatClass.claclulations.SetQualified;
 import lv.timing.report.singleReport.services.processBoatClass.convert.ConvertToResultList;

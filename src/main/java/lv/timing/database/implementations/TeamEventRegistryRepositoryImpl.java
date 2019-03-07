@@ -24,6 +24,15 @@ public class TeamEventRegistryRepositoryImpl extends Repository implements TeamE
     }
 
     @Override
+    public List<EventTeamRegistry> registryListByEventAndBoatClass(CompetitionEvent competitionEvent, TeamBoatClass boatClass) {
+        return session()
+                .createCriteria(EventTeamRegistry.class)
+                .add(Restrictions.eq("competitionEvent", competitionEvent))
+                .add(Restrictions.eq("teamBoatClass", boatClass))
+                .list();
+    }
+
+    @Override
     public boolean deleteEventTeamRaceRegistry(EventTeamRegistry eventTeamRegistry) {
         session().delete(eventTeamRegistry);
         return true;

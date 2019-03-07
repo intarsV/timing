@@ -1,9 +1,15 @@
 package lv.timing.report.teamReport;
 
+import lv.timing.genericServices.InitCBoxEvent;
+import lv.timing.genericServices.InitCBoxSubEvent;
+import lv.timing.genericServices.InitCBoxTeamBoatClass;
 import lv.timing.mainWindow.MainWindowView;
+import lv.timing.report.teamReport.services.PreviewTeamStageResultsService;
+import lv.timing.report.teamReport.services.PreviewTeamStartListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,17 +20,33 @@ public class TeamRaceReportController {
     private TeamRaceReportView view;
 
     @Autowired
-    private TeamRaceReportService service;
+    private InitCBoxEvent initCBoxEvent;
 
-    private boolean addActionsAndRunServices = true;
+    @Autowired
+    private InitCBoxSubEvent initCBoxSubEvent;
+
+    @Autowired
+    private InitCBoxTeamBoatClass initCBoxBoatClass;
+
+    @Autowired
+    private PreviewTeamStartListService startList;
+
+    @Autowired
+    private PreviewTeamStageResultsService stageResults;
+
+
+    @PostConstruct
+    public void init() {
+        view.getBtnStartList().addActionListener(e -> startList.execute());
+        view.getBtnHeatResultsList().addActionListener(e -> stageResults.execute());
+        view.getComboBoxEvent().addActionListener(e -> initCBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
+    }
 
     public void execute() {
         initReportView();
-        if (addActionsAndRunServices = true) {
-        view.getBtnStartList().addActionListener(e -> service.previewStartLis());
-//        view.getBtnHeatResultsList().addActionListener(e -> previewHeatResults());
-            view.getComboBoxEvent().addActionListener(e -> service.initCBoxSubEvent(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
-            addActionsAndRunServices = false;
+        try {
+            view.getFrame().setSelected(true);
+        } catch (java.beans.PropertyVetoException e) {
         }
     }
 
@@ -33,8 +55,8 @@ public class TeamRaceReportController {
         view.getFrame().setFrameIcon(icon);
         view.getComboBoxSubEvent().removeAllItems();
 
-        service.initCBoxEvent(view.getComboBoxEvent());
-        service.initCBoxBoatClass(view.getComboBoxClass());
+        initCBoxEvent.init(view.getComboBoxEvent());
+        initCBoxBoatClass.init(view.getComboBoxClass());
 
         view.getFrame().setVisible(true);
 

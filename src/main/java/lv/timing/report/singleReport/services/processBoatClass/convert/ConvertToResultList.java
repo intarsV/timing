@@ -2,7 +2,7 @@ package lv.timing.report.singleReport.services.processBoatClass.convert;
 
 import lv.timing.domain.EventSingleRegistry;
 import lv.timing.domain.SingleRace;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.report.singleReport.services.processBoatClass.claclulations.CalcRaceTime;
 import lv.timing.report.singleReport.services.processBoatClass.claclulations.CalcTotal;
 import lv.timing.report.singleReport.services.processBoatClass.claclulations.SetStartFinishPenDsqr;

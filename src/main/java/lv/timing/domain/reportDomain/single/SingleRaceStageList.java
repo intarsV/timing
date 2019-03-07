@@ -1,4 +1,4 @@
-package lv.timing.domain.reportDomain;
+package lv.timing.domain.reportDomain.single;
 
 import lv.timing.domain.EventSingleRegistry;
 

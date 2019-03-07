@@ -35,6 +35,9 @@ public class EventTeamRegistry {
     @Column(name = "bib")
     private int bib;
 
+    @OneToMany(mappedBy="eventTeamRegistry")
+    private List<TeamRace> raceResult;
+
     public EventTeamRegistry() {
     }
 
@@ -103,6 +106,22 @@ public class EventTeamRegistry {
         this.bib = bib;
     }
 
+    public TeamBoatClass getTeamBoatClass() {
+        return teamBoatClass;
+    }
+
+    public void setTeamBoatClass(TeamBoatClass teamBoatClass) {
+        this.teamBoatClass = teamBoatClass;
+    }
+
+    public List<TeamRace> getRaceResult() {
+        return raceResult;
+    }
+
+    public void setRaceResult(List<TeamRace> raceResult) {
+        this.raceResult = raceResult;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,4 +135,6 @@ public class EventTeamRegistry {
             return false;
         return true;
     }
+
+
 }

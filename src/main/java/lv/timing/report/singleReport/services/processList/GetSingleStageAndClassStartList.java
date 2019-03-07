@@ -2,7 +2,7 @@ package lv.timing.report.singleReport.services.processList;
 
 import lv.timing.domain.CompetitionEvent;
 import lv.timing.domain.SubEvent;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 
 import java.util.ArrayList;
 import java.util.Comparator;

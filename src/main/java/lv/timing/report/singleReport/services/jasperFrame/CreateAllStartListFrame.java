@@ -1,7 +1,7 @@
 package lv.timing.report.singleReport.services.jasperFrame;
 
 import lv.timing.domain.SubEvent;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.mainWindow.MainWindowView;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;

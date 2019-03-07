@@ -1,5 +1,9 @@
 package lv.timing.report.singleReport;
 
+import lv.timing.domain.ComboBoxItem;
+import lv.timing.domain.CompetitionEvent;
+import lv.timing.domain.SingleBoatClass;
+import lv.timing.domain.SubEvent;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -9,9 +13,9 @@ import java.awt.*;
 public class SingleRaceReportView {
 
     private JInternalFrame frame;
-    private JComboBox comboBoxEvent;
-    private JComboBox comboBoxSubEvent;
-    private JComboBox comboBoxClass;
+    private JComboBox<ComboBoxItem<CompetitionEvent>> comboBoxEvent;
+    private JComboBox<ComboBoxItem<SubEvent>> comboBoxSubEvent;
+    private JComboBox<ComboBoxItem<SingleBoatClass>> comboBoxClass;
     private JButton btnHeatResultsList;
     private JButton btnGrandTotal;
     private JButton btnStartList;
@@ -27,9 +31,9 @@ public class SingleRaceReportView {
         frame.setClosable(true);
 
         //Create components;
-        comboBoxEvent = new JComboBox();
-        comboBoxSubEvent = new JComboBox();
-        comboBoxClass = new JComboBox();
+        comboBoxEvent = new JComboBox<ComboBoxItem<CompetitionEvent>>();
+        comboBoxSubEvent = new JComboBox<ComboBoxItem<SubEvent>>();
+        comboBoxClass = new JComboBox<ComboBoxItem<SingleBoatClass>>();
         btnHeatResultsList = new JButton("Preview heat results");
         btnGrandTotal = new JButton("GrandTotal");
         btnStartList = new JButton("Start List");
@@ -70,27 +74,27 @@ public class SingleRaceReportView {
         this.frame = frame;
     }
 
-    public JComboBox getComboBoxEvent() {
+    public JComboBox<ComboBoxItem<CompetitionEvent>> getComboBoxEvent() {
         return comboBoxEvent;
     }
 
-    public void setComboBoxEvent(JComboBox comboBoxEvent) {
+    public void setComboBoxEvent(JComboBox<ComboBoxItem<CompetitionEvent>> comboBoxEvent) {
         this.comboBoxEvent = comboBoxEvent;
     }
 
-    public JComboBox getComboBoxSubEvent() {
+    public JComboBox<ComboBoxItem<SubEvent>> getComboBoxSubEvent() {
         return comboBoxSubEvent;
     }
 
-    public void setComboBoxSubEvent(JComboBox comboBoxSubEvent) {
+    public void setComboBoxSubEvent(JComboBox<ComboBoxItem<SubEvent>> comboBoxSubEvent) {
         this.comboBoxSubEvent = comboBoxSubEvent;
     }
 
-    public JComboBox getComboBoxClass() {
+    public JComboBox<ComboBoxItem<SingleBoatClass>> getComboBoxClass() {
         return comboBoxClass;
     }
 
-    public void setComboBoxClass(JComboBox comboBoxClass) {
+    public void setComboBoxClass(JComboBox<ComboBoxItem<SingleBoatClass>> comboBoxClass) {
         this.comboBoxClass = comboBoxClass;
     }
 

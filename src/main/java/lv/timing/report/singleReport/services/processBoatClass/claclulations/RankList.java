@@ -1,6 +1,6 @@
 package lv.timing.report.singleReport.services.processBoatClass.claclulations;
 
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 
 import java.math.BigDecimal;
 import java.util.Comparator;

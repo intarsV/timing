@@ -1,7 +1,7 @@
 package lv.timing.report.singleReport.services.processBoatClass;
 
-import lv.timing.domain.reportDomain.GrandTotalList;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.GrandTotalList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.report.singleReport.services.processBoatClass.claclulations.CalcPenalty;
 
 public class ProcessGrandTotalFormatFiveItem {

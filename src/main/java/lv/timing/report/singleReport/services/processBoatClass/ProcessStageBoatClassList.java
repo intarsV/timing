@@ -1,8 +1,8 @@
 package lv.timing.report.singleReport.services.processBoatClass;
 
 import lv.timing.domain.SubEvent;
-import lv.timing.domain.reportDomain.RaceResultList;
-import lv.timing.domain.reportDomain.SingleRaceStageList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
+import lv.timing.domain.reportDomain.single.SingleRaceStageList;
 
 import java.util.ArrayList;
 import java.util.List;

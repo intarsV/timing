@@ -3,7 +3,7 @@ package lv.timing.report.singleReport.services.processList;
 import lv.timing.domain.CompetitionEvent;
 import lv.timing.domain.SingleBoatClass;
 import lv.timing.domain.SubEvent;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.report.singleReport.services.processBoatClass.ProcessResultsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

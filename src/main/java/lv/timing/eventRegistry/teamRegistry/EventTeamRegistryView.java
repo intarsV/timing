@@ -1,9 +1,6 @@
 package lv.timing.eventRegistry.teamRegistry;
 
-import lv.timing.domain.SingleBoatClass;
-import lv.timing.domain.ComboBoxItem;
-import lv.timing.domain.CompetitionEvent;
-import lv.timing.domain.Competitor;
+import lv.timing.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,7 +22,7 @@ public class EventTeamRegistryView {
     private JComboBox<ComboBoxItem<Competitor>> comboBoxCompetitorOne;
     private JComboBox<ComboBoxItem<Competitor>> comboBoxCompetitorTwo;
     private JComboBox<ComboBoxItem<Competitor>> comboBoxCompetitorThree;
-    private JComboBox<ComboBoxItem<SingleBoatClass>> comboBoxClass;
+    private JComboBox<ComboBoxItem<TeamBoatClass>> comboBoxClass;
     private JTextField textFieldBIB;
     private JLabel lblCompetitorOne;
     private JLabel lblCompetitorTwo;
@@ -54,7 +51,7 @@ public class EventTeamRegistryView {
         scrollPane = new JScrollPane();
         resultTable = new JTable();
         comboBoxEvent = new JComboBox<ComboBoxItem<CompetitionEvent>>();
-        comboBoxClass = new JComboBox<ComboBoxItem<SingleBoatClass>>();
+        comboBoxClass = new JComboBox<ComboBoxItem<TeamBoatClass>>();
         comboBoxCompetitorOne = new JComboBox<ComboBoxItem<Competitor>>();
         comboBoxCompetitorTwo = new JComboBox<ComboBoxItem<Competitor>>();
         comboBoxCompetitorThree = new JComboBox<ComboBoxItem<Competitor>>();
@@ -254,11 +251,11 @@ public class EventTeamRegistryView {
         this.comboBoxCompetitorThree = comboBoxCompetitorThree;
     }
 
-    public JComboBox<ComboBoxItem<SingleBoatClass>> getComboBoxClass() {
+    public JComboBox<ComboBoxItem<TeamBoatClass>> getComboBoxClass() {
         return comboBoxClass;
     }
 
-    public void setComboBoxClass(JComboBox<ComboBoxItem<SingleBoatClass>> comboBoxClass) {
+    public void setComboBoxClass(JComboBox<ComboBoxItem<TeamBoatClass>> comboBoxClass) {
         this.comboBoxClass = comboBoxClass;
     }
 

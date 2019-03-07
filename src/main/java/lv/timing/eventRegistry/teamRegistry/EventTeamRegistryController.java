@@ -61,7 +61,7 @@ public class EventTeamRegistryController {
 
     private void initSingleRegistryView() {
         initEvent.init(view.getComboBoxEvent());
-        initBoatClass.initBoatClassComboBox(view.getComboBoxClass());
+        initBoatClass.init(view.getComboBoxClass());
         initCompetitors.init(view.getComboBoxCompetitorOne());
         initCompetitors.init(view.getComboBoxCompetitorTwo());
         initCompetitors.init(view.getComboBoxCompetitorThree());

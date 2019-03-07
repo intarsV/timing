@@ -15,7 +15,7 @@ public class InitCBoxTeamBoatClass {
     @Autowired
     private GenericServicesRepository database;
 
-    public void initBoatClassComboBox(JComboBox comboBox) {
+    public void init(JComboBox comboBox) {
         try {
             comboBox.removeAllItems();
             List<TeamBoatClass> teamBoatClassList = database.teamBoatClassList();

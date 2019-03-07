@@ -2,7 +2,7 @@ package lv.timing.report.singleReport.services;
 
 import lv.timing.domain.CompetitionEvent;
 import lv.timing.domain.SingleBoatClass;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 import lv.timing.genericServices.GetObjectFromCBoxEvent;
 import lv.timing.genericServices.GetObjectFromCBoxSingleBoatClass;
 import lv.timing.report.singleReport.SingleRaceReportView;

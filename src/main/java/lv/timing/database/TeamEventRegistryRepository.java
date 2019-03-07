@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface TeamEventRegistryRepository {
 
     List<EventTeamRegistry> registryList(CompetitionEvent competitionEvent);
+    List<EventTeamRegistry> registryListByEventAndBoatClass(CompetitionEvent competitionEvent, TeamBoatClass boatClass);
 
     boolean deleteEventTeamRaceRegistry(EventTeamRegistry eventteamRegistry);
 

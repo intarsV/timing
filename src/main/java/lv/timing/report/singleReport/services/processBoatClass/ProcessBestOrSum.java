@@ -1,7 +1,7 @@
 package lv.timing.report.singleReport.services.processBoatClass;
 
 import lv.timing.domain.CompetitionEvent;
-import lv.timing.domain.reportDomain.RaceResultList;
+import lv.timing.domain.reportDomain.single.RaceResultList;
 
 import java.util.List;
 

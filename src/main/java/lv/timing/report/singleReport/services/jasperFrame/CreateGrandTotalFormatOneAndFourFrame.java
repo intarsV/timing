@@ -1,6 +1,6 @@
 package lv.timing.report.singleReport.services.jasperFrame;
 
-import lv.timing.domain.reportDomain.MergedList;
+import lv.timing.domain.reportDomain.single.MergedList;
 import lv.timing.mainWindow.MainWindowView;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
