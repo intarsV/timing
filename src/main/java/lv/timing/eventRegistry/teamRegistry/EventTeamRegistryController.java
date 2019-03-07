@@ -37,12 +37,12 @@ public class EventTeamRegistryController {
     private UpdateToRegistryTeam update;
 
     @Autowired
-    private InitEventTeamRegistryModel refreshModel;
+    private InitEventTeamRegistryModel initEventTeamRegistryModel;
 
     @PostConstruct
     public void init() {
         view.formatTable();
-        view.getComboBoxEvent().addActionListener(e -> refreshModel.init());
+        view.getComboBoxEvent().addActionListener(e -> initEventTeamRegistryModel.init());
         view.getBtnInsert().addActionListener(e -> add.execute());
         view.getBtnDelete().addActionListener(e -> delete.execute());
         view.getBtnUpdate().addActionListener(e -> update.execute());

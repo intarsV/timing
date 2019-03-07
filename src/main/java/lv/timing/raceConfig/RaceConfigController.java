@@ -32,12 +32,12 @@ public class RaceConfigController {
     private DeleteRaceConfig delete;
 
     @Autowired
-    private InitRaceConfigModel getList;
+    private InitRaceConfigModel initRaceConfigModel;
 
     @PostConstruct
     public void init() {
         view.formatTable();
-        view.getComboBoxEvent().addActionListener(e -> getList.init(view));
+        view.getComboBoxEvent().addActionListener(e -> initRaceConfigModel.init(view));
         view.getBtnInsert().addActionListener(e -> add.execute(view));
         view.getBtnDelete().addActionListener(e -> delete.execute(view));
     }

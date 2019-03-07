@@ -25,7 +25,7 @@ public class CompetitionEventController {
     private UpdateEvent update;
 
     @Autowired
-    private InitEventModel getList;
+    private InitEventModel initEventModel;
 
     @Autowired
     private InitCBoxFormat initCBoxFormat;
@@ -47,7 +47,7 @@ public class CompetitionEventController {
     }
 
     private void initEventView() {
-        getList.init(view);
+        initEventModel.init(view);
         initCBoxFormat.initComboBoxFormat(view);
         Icon icon = new ImageIcon(getClass().getResource("/images/icons_small.png"));
         view.getFrame().setFrameIcon(icon);

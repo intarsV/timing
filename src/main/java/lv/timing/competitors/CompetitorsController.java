@@ -28,12 +28,12 @@ public class CompetitorsController {
     private InitCBoxCountry initCBoxCountry;
 
     @Autowired
-    private InitCompetitorsModel getCompetitorList;
+    private InitCompetitorsModel initCompetitorsModel;
 
     @PostConstruct
     public void init() {
         view.formatTable();
-        getCompetitorList.init(view);
+        initCompetitorsModel.init(view);
         initCBoxCountry.initComboBoxCountry(view);
 
         view.getBtnInsert().addActionListener(e -> add.execute(view));
