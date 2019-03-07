@@ -1,6 +1,5 @@
 package lv.timing.competitors.services;
 
-import lv.timing.Error;
 import lv.timing.competitors.CompetitorsModel;
 import lv.timing.competitors.CompetitorsView;
 import lv.timing.competitors.validation.CompetitorValidator;
@@ -11,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.Arrays;
@@ -37,7 +35,7 @@ public class AddCompetitorTest {
     private CompetitorValidator validator;
 
     @Mock
-    private GetCompetitorsList getList;
+    private InitCompetitorsModel getList;
 
     @InjectMocks
     AddCompetitor service;
@@ -67,7 +65,7 @@ public class AddCompetitorTest {
     @Test
     public void verifyThatRefreshIsCalled() {
         service.execute(view);
-        verify(getList, times(1)).getCompetitorsList(view);
+        verify(getList, times(1)).init(view);
     }
 
     @Test
