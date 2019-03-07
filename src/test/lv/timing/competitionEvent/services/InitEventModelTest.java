@@ -21,7 +21,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class GetEventListTest {
+public class InitEventModelTest {
 
     private List<CompetitionEvent> eventList;
     private CompetitionEventView view;
@@ -32,7 +32,7 @@ public class GetEventListTest {
     CompetitionEventRepository database;
 
     @InjectMocks
-    GetEventList service;
+    InitEventModel service;
 
     @Before
     public void init() {
@@ -48,14 +48,14 @@ public class GetEventListTest {
     @Test
     public void verifyThatDatabaseCalledOnce() {
         Mockito.when(database.eventList()).thenReturn(eventList);
-        service.getCompetitionEventList(view);
+        service.init(view);
         verify(database, times(1)).eventList();
     }
 
     @Test
     public void verifyThatRecordAddedToModel() {
         Mockito.when(database.eventList()).thenReturn(eventList);
-        service.getCompetitionEventList(view);
+        service.init(view);
         assertEquals(1, view.getModel().getRowCount());
     }
 }
