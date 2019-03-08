@@ -16,7 +16,7 @@ public class CompetitionEventController {
     private CompetitionEventView view;
 
     @Autowired
-    private InsertEvent add;
+    private AddEvent add;
 
     @Autowired
     private DeleteEvent delete;

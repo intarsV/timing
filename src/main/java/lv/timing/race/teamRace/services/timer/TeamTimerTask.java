@@ -6,7 +6,7 @@ import lv.timing.domain.*;
 import lv.timing.genericServices.GetObjectFromCBoxEvent;
 import lv.timing.genericServices.GetObjectFromCBoxSubEvent;
 import lv.timing.race.teamRace.processTeamRace.TeamRaceView;
-import lv.timing.race.teamRace.services.RefreshTeamModel;
+import lv.timing.race.teamRace.services.InitTeamRaceModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class TeamTimerTask {
     private VerifyMcuDataRepository databaseMcu;
 
     @Autowired
-    private RefreshTeamModel refreshTeamModel;
+    private InitTeamRaceModel initTeamRaceModel;
 
     public void processTmpDataTimer(TeamRaceView view, Timer timerProcess) {
         CompetitionEvent competitionEvent = GetObjectFromCBoxEvent.getObject(view.getComboBoxEvent());
@@ -44,6 +44,7 @@ public class TeamTimerTask {
                     processIfNotExists(verifyMcuData, eventTeamRegistry, competitionEvent, subEvent);
                 }
             }
+            initTeamRaceModel.init(false, view);
         }
         if (!view.getFrame().isVisible()) {
             timerProcess.cancel();
@@ -60,7 +61,6 @@ public class TeamTimerTask {
         database.updateTeamRace(teamRace);
         verifyMcuData.setDone(true);
         databaseMcu.update(verifyMcuData);
-        refreshTeamModel.updateModel();
     }
 
     private void processIfNotExists(VerifyMcuData verifyMcuData, EventTeamRegistry eventTeamRegistry, CompetitionEvent competitionEvent, SubEvent subEvent) {
@@ -77,6 +77,5 @@ public class TeamTimerTask {
         database.saveTeamRace(teamRace);
         verifyMcuData.setDone(true);
         databaseMcu.update(verifyMcuData);
-        refreshTeamModel.updateModel();
     }
 }

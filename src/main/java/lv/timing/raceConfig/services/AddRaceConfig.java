@@ -20,7 +20,7 @@ public class AddRaceConfig {
     private RaceConfigRepository database;
 
     @Autowired
-    private RefreshRaceConfigModel refresh;
+    private InitRaceConfigModel initRaceConfigModel;
 
     public void execute(RaceConfigView view) {
         if (view.getComboBoxEvent().getSelectedIndex() > 0 && view.getComboBoxClass().getSelectedIndex() > 0) {
@@ -33,7 +33,7 @@ public class AddRaceConfig {
                     , view.getTextFieldSf().getText());
             RaceConfig raceConfig = new RaceConfig(valueList);
             database.addRaceConfig(raceConfig);
-            refresh.refresh();
+            initRaceConfigModel.init(view);
             resetTextBoxes(view);
         }
     }

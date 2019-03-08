@@ -6,7 +6,7 @@ import lv.timing.domain.*;
 import lv.timing.genericServices.GetObjectFromCBoxEvent;
 import lv.timing.genericServices.GetObjectFromCBoxSubEvent;
 import lv.timing.race.singleRace.processSingleRace.SingleRaceView;
-import lv.timing.race.singleRace.services.RefreshSingleModel;
+import lv.timing.race.singleRace.services.InitSingleRaceModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +24,7 @@ public class SingleTimerTask {
     private VerifyMcuDataRepository databaseMcu;
 
     @Autowired
-    private RefreshSingleModel refreshSingleModel;
-
+    private InitSingleRaceModel initSingleRaceModel;
 
     public void processTmpDataTimer(SingleRaceView view, Timer timerProcess) {
 
@@ -38,7 +37,7 @@ public class SingleTimerTask {
 
             for (VerifyMcuData verifyMcuData : verifyMcuDataList) {
                 EventSingleRegistry eventSingleRegistry = database.findEventSingleRegistry(verifyMcuData.getBib(), competitionEvent).get();
-                Optional<SingleRace> findSingleRace = database.findSingleRaceWithEventSingleRegistry(eventSingleRegistry,subEvent);
+                Optional<SingleRace> findSingleRace = database.findSingleRaceWithEventSingleRegistry(eventSingleRegistry, subEvent);
 
                 if (findSingleRace.isPresent()) {
                     processIfExists(verifyMcuData, findSingleRace);
@@ -46,7 +45,7 @@ public class SingleTimerTask {
                     processIfNotExists(verifyMcuData, eventSingleRegistry, competitionEvent, subEvent);
                 }
             }
-            refreshSingleModel.updateModel(view);
+            initSingleRaceModel.init(false, view);
         }
         if (!view.getFrame().isVisible()) {
             timerProcess.cancel();

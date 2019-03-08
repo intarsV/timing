@@ -35,7 +35,7 @@ public class EventSingleRegistryController {
     private InitCBoxGroup initCBoxGroup;
 
     @Autowired
-    private AddToSingleRegistry add;
+    private AddSingleRegistry add;
 
     @Autowired
     private DeleteFromRegistry delete;

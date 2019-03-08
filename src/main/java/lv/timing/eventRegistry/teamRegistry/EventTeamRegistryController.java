@@ -1,5 +1,7 @@
 package lv.timing.eventRegistry.teamRegistry;
 
+import lv.timing.competitionEvent.CompetitionEventController;
+import lv.timing.competitors.CompetitorsController;
 import lv.timing.eventRegistry.teamRegistry.services.*;
 import lv.timing.genericServices.InitCBoxCompetitors;
 import lv.timing.genericServices.InitCBoxEvent;
@@ -28,7 +30,7 @@ public class EventTeamRegistryController {
     private InitCBoxTeamBoatClass initBoatClass;
 
     @Autowired
-    private AddToTeamRegistry add;
+    private AddTeamRegistry add;
 
     @Autowired
     private DeleteFromRegistryTeam delete;
@@ -39,6 +41,12 @@ public class EventTeamRegistryController {
     @Autowired
     private InitEventTeamRegistryModel initEventTeamRegistryModel;
 
+    @Autowired
+    private CompetitionEventController eventController;
+
+    @Autowired
+    private CompetitorsController competitorsController;
+
     @PostConstruct
     public void init() {
         view.formatTable();
@@ -47,8 +55,8 @@ public class EventTeamRegistryController {
         view.getBtnDelete().addActionListener(e -> delete.execute());
         view.getBtnUpdate().addActionListener(e -> update.execute());
         view.getResultTable().getSelectionModel().addListSelectionListener(e -> UpdateControlsTeam.update(view));
-        //  view.getBtnAddEvent().addActionListener(e -> addEvent());
-//        view.getBtnAddCompetitor().addActionListener(e -> addCompetitor());
+        view.getBtnAddEvent().addActionListener(e -> eventController.execute());
+        view.getBtnAddCompetitor().addActionListener(e -> competitorsController.execute());
     }
 
     public void execute() {

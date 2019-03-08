@@ -6,6 +6,7 @@ import lv.timing.domain.ComboBoxItem;
 import lv.timing.domain.CompetitionEvent;
 import lv.timing.domain.CompetitionFormat;
 import lv.timing.eventRegistry.singleRegistry.EventSingleRegistryView;
+import lv.timing.eventRegistry.teamRegistry.EventTeamRegistryView;
 import lv.timing.genericServices.InitCBoxEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class InsertEvent {
+public class AddEvent {
 
     @Autowired
     private CompetitionEventRepository database;
@@ -23,11 +24,13 @@ public class InsertEvent {
     private InitEventModel InitEventModel;
 
     @Autowired
-    private EventSingleRegistryView viewSingleRegistry;
+    private EventSingleRegistryView eventSingleRegistryView;
+
+    @Autowired
+    private EventTeamRegistryView eventTeamRegistryView;
 
     @Autowired
     private InitCBoxEvent initEvent;
-
 
 
     public void execute(CompetitionEventView view) {
@@ -38,7 +41,8 @@ public class InsertEvent {
         database.addEvent(competitionEvent);
         InitEventModel.init(view);
         resetTextBoxes(view);
-        initEvent.init(viewSingleRegistry.getComboBoxEvent());
+        initEvent.init(eventSingleRegistryView.getComboBoxEvent());
+        initEvent.init(eventTeamRegistryView.getComboBoxEvent());
     }
 
     private CompetitionFormat getEventObjectFromSelection(CompetitionEventView view) {

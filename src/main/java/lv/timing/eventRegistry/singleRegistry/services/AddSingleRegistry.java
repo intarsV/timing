@@ -12,7 +12,7 @@ import javax.swing.*;
 import java.util.List;
 
 @Service
-public class AddToSingleRegistry {
+public class AddSingleRegistry {
 
     @Autowired
     private EventSingleRegistryView view;

@@ -5,6 +5,9 @@ import lv.timing.competitors.CompetitorsView;
 import lv.timing.competitors.validation.CompetitorValidator;
 import lv.timing.database.CompetitorRepository;
 import lv.timing.domain.Competitor;
+import lv.timing.eventRegistry.singleRegistry.EventSingleRegistryView;
+import lv.timing.eventRegistry.teamRegistry.EventTeamRegistryView;
+import lv.timing.genericServices.InitCBoxCompetitors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +25,16 @@ public class AddCompetitor {
     private CompetitorValidator validator;
 
     @Autowired
-    private InitCompetitorsModel refresh;
+    private InitCompetitorsModel initCompetitorsModel;
+
+    @Autowired
+    private EventSingleRegistryView eventSingleRegistryView;
+
+    @Autowired
+    private EventTeamRegistryView eventTeamRegistryView;
+
+    @Autowired
+    private InitCBoxCompetitors initCBoxCompetitors;
 
     public void execute(CompetitorsView view) {
         List<Object> valueList = Arrays.asList(view.getTextFieldName().getText()
@@ -35,8 +47,12 @@ public class AddCompetitor {
         if (errors.isEmpty()) {
             Competitor competitor = new Competitor(valueList);
             database.addCompetitor(competitor);
-            refresh.init(view);
+            initCompetitorsModel.init(view);
             resetTextBoxes(view);
+            initCBoxCompetitors.init(eventSingleRegistryView.getComboBoxCompetitor());
+            initCBoxCompetitors.init(eventTeamRegistryView.getComboBoxCompetitorOne());
+            initCBoxCompetitors.init(eventTeamRegistryView.getComboBoxCompetitorTwo());
+            initCBoxCompetitors.init(eventTeamRegistryView.getComboBoxCompetitorThree());
         } else {
             JOptionPane.showMessageDialog(null, errors.get(0).getDescription());
         }

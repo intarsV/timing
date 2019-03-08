@@ -27,7 +27,7 @@ public class AddRaceConfigTest {
     RaceConfigRepository database;
 
     @Mock
-    RefreshRaceConfigModel refresh;
+    InitRaceConfigModel initRaceConfigModel;
 
     @InjectMocks
     AddRaceConfig service;
@@ -52,9 +52,9 @@ public class AddRaceConfigTest {
     }
 
     @Test
-    public void verifyThatRefreshIsCalled() {
+    public void verifyThatInitModelIsCalled() {
         service.execute(view);
-        verify(refresh, times(1)).refresh();
+        verify(initRaceConfigModel, times(1)).init(view);
     }
 
     @Test

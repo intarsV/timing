@@ -4,14 +4,20 @@ import lv.timing.competitors.CompetitorsModel;
 import lv.timing.competitors.CompetitorsView;
 import lv.timing.competitors.validation.CompetitorValidator;
 import lv.timing.database.CompetitorRepository;
+import lv.timing.domain.ComboBoxItem;
 import lv.timing.domain.Competitor;
+import lv.timing.eventRegistry.singleRegistry.EventSingleRegistryView;
+import lv.timing.eventRegistry.teamRegistry.EventTeamRegistryView;
+import lv.timing.genericServices.InitCBoxCompetitors;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,10 +29,8 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class AddCompetitorTest {
 
-    // private Competitor competitor;
     private CompetitorsView view;
     private CompetitorsModel model;
-
 
     @Mock
     private CompetitorRepository database;
@@ -35,7 +39,16 @@ public class AddCompetitorTest {
     private CompetitorValidator validator;
 
     @Mock
-    private InitCompetitorsModel getList;
+    private InitCompetitorsModel initCompetitorsModel;
+
+    @Mock
+    private EventSingleRegistryView eventSingleRegistryView;
+
+    @Mock
+    private EventTeamRegistryView eventTeamRegistryView;
+
+    @Mock
+    private InitCBoxCompetitors initCBoxCompetitors;
 
     @InjectMocks
     AddCompetitor service;
@@ -63,9 +76,9 @@ public class AddCompetitorTest {
     }
 
     @Test
-    public void verifyThatRefreshIsCalled() {
+    public void verifyThaInitModelIsCalled() {
         service.execute(view);
-        verify(getList, times(1)).init(view);
+        verify(initCompetitorsModel, times(1)).init(view);
     }
 
     @Test
@@ -73,5 +86,4 @@ public class AddCompetitorTest {
         service.execute(view);
         verify(database).addCompetitor(any(Competitor.class));
     }
-
 }
