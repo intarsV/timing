@@ -267,7 +267,7 @@ INSERT INTO `sub_event` (`id`, `competition_event_format_id`, `sub_event`) VALUE
 
 INSERT INTO `groups` (`id`, `group`, `deleted`) VALUES (NULL, 'U-8', '0'), (NULL, 'U-10', '0'),
 (NULL, 'U-12', '0'), (NULL, 'U-14', '0'),(NULL, 'U-15', '0'), (NULL, 'U-16', '0'),(NULL, 'U-18', '0'), (NULL, 'U-23', '0'),
-(NULL, 'open', '0'), (NULL, '35+', '0'), (NULL, '40+', '0'), (NULL, '45+', '0'),(NULL, '55+', '0'), (NULL, 'veteran', '0');
+(NULL, 'open', '0'), (NULL, '35+', '0'), (NULL, '40+', '0'), (NULL, '45+', '0'),(NULL, '55+', '0'), (NULL, 'Veteran', '0');
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
