@@ -1,11 +1,8 @@
 package lv.initex.race.singleRace.editSingleRace;
 
-import lv.initex.genericServices.InitCBoxEvent;
-import lv.initex.genericServices.InitCBoxSubEvent;
+import lv.initex.genericServices.GenericServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
-import lv.initex.race.singleRace.services.DeleteSingleRaceRow;
-import lv.initex.race.singleRace.services.InitSingleRaceModel;
-import lv.initex.race.singleRace.services.UpdateValuesSingleRace;
+import lv.initex.race.singleRace.services.SingleRaceServiceDispatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,27 +17,18 @@ public class EditSingleRaceController {
     private EditSingleRaceView view;
 
     @Autowired
-    private InitCBoxEvent initCBoxEvent;
+    private GenericServiceDispatcher genericService;
 
     @Autowired
-    private InitCBoxSubEvent initCBoxSubEvent;
-
-    @Autowired
-    private InitSingleRaceModel initSingleRaceModel;
-
-    @Autowired
-    private UpdateValuesSingleRace update;
-
-    @Autowired
-    private DeleteSingleRaceRow delete;
+    private SingleRaceServiceDispatcher service;
 
     @PostConstruct
     public void init() {
         view.formatTable(view.getModel());
-        view.getModel().addTableModelListener(tme -> update.execute(tme, view));
-        view.getComboBoxEvent().addActionListener(e -> initCBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
-        view.getComboBoxSubEvent().addActionListener(e -> initSingleRaceModel.init(true, view));
-        view.getBtnDeleteRow().addActionListener(e -> delete.execute(view));
+        view.getModel().addTableModelListener(tme -> service.updateValuesSingleRace(tme, view));
+        view.getComboBoxEvent().addActionListener(e -> genericService.initCBoxSubEvent(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
+        view.getComboBoxSubEvent().addActionListener(e -> service.initSingleRaceModel(true, view));
+        view.getBtnDeleteRow().addActionListener(e -> service.deleteSingleRaceRow(view));
     }
 
     public void execute() {
@@ -58,7 +46,7 @@ public class EditSingleRaceController {
         view.getComboBoxEvent().removeAllItems();
         view.getComboBoxSubEvent().removeAllItems();
         view.getFrame().setVisible(true);
-        initCBoxEvent.init(view.getComboBoxEvent());
+        genericService.initCBoxEvent(view.getComboBoxEvent());
 
         //Center and add JInternalFrame
         JDesktopPane desktop = MainWindowView.getDesktop();

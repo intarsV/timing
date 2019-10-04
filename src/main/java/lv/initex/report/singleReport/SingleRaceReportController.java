@@ -1,13 +1,12 @@
 package lv.initex.report.singleReport;
 
-import lv.initex.genericServices.InitCBoxEvent;
-import lv.initex.genericServices.InitCBoxSingleBoatClass;
-import lv.initex.genericServices.InitCBoxSubEvent;
+import lv.initex.genericServices.GenericServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
 import lv.initex.report.singleReport.services.GrandTotalGroupService;
 import lv.initex.report.singleReport.services.GrandTotalListService;
 import lv.initex.report.singleReport.services.PreviewStageResultsService;
 import lv.initex.report.singleReport.services.PreviewStartListService;
+import lv.initex.report.singleReport.services.jasperFrame.TestFrame;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,13 +21,7 @@ public class SingleRaceReportController {
     private SingleRaceReportView view;
 
     @Autowired
-    private InitCBoxEvent initCBoxEvent;
-
-    @Autowired
-    private InitCBoxSubEvent initCBoxSubEvent;
-
-    @Autowired
-    private InitCBoxSingleBoatClass initCBoxBoatClass;
+    private GenericServiceDispatcher genericService;
 
     @Autowired
     private PreviewStartListService startList;
@@ -42,13 +35,17 @@ public class SingleRaceReportController {
     @Autowired
     private GrandTotalGroupService grandTotalByGroup;
 
+    @Autowired
+    private TestFrame testFrame;
+
     @PostConstruct
     public void init() {
         view.getBtnStartList().addActionListener(e -> startList.execute());
         view.getBtnHeatResultsList().addActionListener(e -> stageResults.execute());
-        view.getComboBoxEvent().addActionListener(e -> initCBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
+        view.getComboBoxEvent().addActionListener(e -> genericService.initCBoxSubEvent(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
         view.getBtnGrandTotal().addActionListener(e -> grandTotalList.execute());
         view.getBtnGrandTotalGroups().addActionListener(e -> grandTotalByGroup.execute());
+        //testFrame.previewList();
     }
 
     public void execute() {
@@ -64,8 +61,8 @@ public class SingleRaceReportController {
         view.getFrame().setFrameIcon(icon);
         view.getComboBoxSubEvent().removeAllItems();
 
-        initCBoxEvent.init(view.getComboBoxEvent());
-        initCBoxBoatClass.init(view.getComboBoxClass());
+        genericService.initCBoxEvent(view.getComboBoxEvent());
+        genericService.initCBoxSingleBoatClass(view.getComboBoxClass());
 
         view.getFrame().setVisible(true);
 

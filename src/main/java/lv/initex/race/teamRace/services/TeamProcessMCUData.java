@@ -1,4 +1,4 @@
-package lv.initex.race.teamRace.services.timer;
+package lv.initex.race.teamRace.services;
 
 import lv.initex.database.TeamRaceRepository;
 import lv.initex.database.VerifyMcuDataRepository;
@@ -6,29 +6,22 @@ import lv.initex.domain.*;
 import lv.initex.genericServices.GetObjectFromCBoxEvent;
 import lv.initex.genericServices.GetObjectFromCBoxSubEvent;
 import lv.initex.race.teamRace.processTeamRace.TeamRaceView;
-import lv.initex.race.teamRace.services.InitTeamRaceModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Timer;
 
-@Service
-public class TeamTimerTask {
+public class TeamProcessMCUData {
 
-    @Autowired
+    private CompetitionEvent competitionEvent;
+    private SubEvent subEvent;
     private TeamRaceRepository database;
-
-    @Autowired
     private VerifyMcuDataRepository databaseMcu;
 
-    @Autowired
-    private InitTeamRaceModel initTeamRaceModel;
-
-    public void processTmpDataTimer(TeamRaceView view, Timer timerProcess) {
-        CompetitionEvent competitionEvent = GetObjectFromCBoxEvent.getObject(view.getComboBoxEvent());
-        SubEvent subEvent = GetObjectFromCBoxSubEvent.getObject(view.getComboBoxSubEvent());
+    public void processTmpDataTimer(TeamRaceView view, TeamRaceRepository database, VerifyMcuDataRepository databaseMcu) {
+        this.database = database;
+        this.databaseMcu = databaseMcu;
+        competitionEvent = GetObjectFromCBoxEvent.getObject(view.getComboBoxEvent());
+        subEvent = GetObjectFromCBoxSubEvent.getObject(view.getComboBoxSubEvent());
 
         List<VerifyMcuData> verifyMcuDataList = databaseMcu.getListWithAccepted();
         if (view.getResultTable().getCellEditor() == null && verifyMcuDataList.size() > 0) {
@@ -44,10 +37,7 @@ public class TeamTimerTask {
                     processIfNotExists(verifyMcuData, eventTeamRegistry, competitionEvent, subEvent);
                 }
             }
-            initTeamRaceModel.init(false, view);
-        }
-        if (!view.getFrame().isVisible()) {
-            timerProcess.cancel();
+            InitTeamRaceModel.init(false, view, database);
         }
     }
 

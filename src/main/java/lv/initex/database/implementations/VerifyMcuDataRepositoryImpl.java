@@ -57,18 +57,6 @@ public class VerifyMcuDataRepositoryImpl extends Repository implements VerifyMcu
     }
 
     @Override
-    public boolean updateStartLine(VerifyMcuData verifyMcuData) {
-        session().update(verifyMcuData);
-        return true;
-    }
-
-    @Override
-    public boolean updateFinishLine(VerifyMcuData verifyMcuData) {
-        session().update(verifyMcuData);
-        return true;
-    }
-
-    @Override
     public boolean update(VerifyMcuData verifyMcuData){
         session().update(verifyMcuData);
         return true;

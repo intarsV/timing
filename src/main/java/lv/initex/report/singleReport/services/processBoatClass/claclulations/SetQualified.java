@@ -21,7 +21,7 @@ public class SetQualified {
 
         Long format = competitionEvent.getEventFormat().getId();
 
-        if (format == 2 || format == 3 || format == 6 || format == 5) {
+        if (format == 2 || format == 3 || format == 6 || format == 5|| format == 7) {
             Optional<RaceConfig> raceConfig = database.getQualifiedNumber(competitionEvent, boatClass);
 
             if (raceConfig.isPresent()) {
@@ -68,7 +68,7 @@ public class SetQualified {
 
     private void qualifyBestH1H2(List<RaceResultList> list, int qualified) {
         for (RaceResultList e : list) {
-            if (e.getRankBestH1H2() <= qualified && e.getRankHeatTwo() > 0) {
+            if (e.getRankBestH1H2() <= qualified) {
                 e.setBestH1h2Qualified(true);
             }
         }

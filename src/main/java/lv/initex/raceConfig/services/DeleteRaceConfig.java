@@ -3,16 +3,10 @@ package lv.initex.raceConfig.services;
 import lv.initex.database.RaceConfigRepository;
 import lv.initex.domain.RaceConfig;
 import lv.initex.raceConfig.RaceConfigView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class DeleteRaceConfig {
 
-    @Autowired
-    private RaceConfigRepository database;
-
-    public void execute(RaceConfigView view) {
+    public void execute(RaceConfigView view, RaceConfigRepository database) {
         int i = view.getRaceConfigTable().getSelectedRow();
         if (i != -1) {
             if (view.getRaceConfigTable().getSelectedRow() != -1) {

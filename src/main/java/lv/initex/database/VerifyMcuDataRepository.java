@@ -16,10 +16,6 @@ public interface VerifyMcuDataRepository {
 
     int countFinishLine();
 
-    boolean updateStartLine(VerifyMcuData verifyMcuData);
-
-    boolean updateFinishLine(VerifyMcuData verifyMcuData);
-
     boolean update(VerifyMcuData verifyMcuData);
 
 }

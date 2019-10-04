@@ -419,7 +419,7 @@ public class TeamRace {
     public int[] getPenaltyList() {
         return new int[]{this.g1, this.g2, this.g3, this.g4, this.g5, this.g6, this.g7, this.g8, this.g9, this.g10
                 , this.g11, this.g12, this.g13, this.g14, this.g15, this.g16, this.g17, this.g18, this.g19, this.g20
-                , this.g21, this.g22, this.g23, this.g24
+                , this.g21, this.g22, this.g23, this.g24, this.p15
         };
     }
 

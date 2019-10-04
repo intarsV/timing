@@ -1,51 +1,54 @@
 package lv.initex.race.singleRace.processSingleRace;
 
-import lv.initex.genericServices.InitCBoxEvent;
-import lv.initex.genericServices.InitCBoxSubEvent;
+import lv.initex.genericServices.GenericServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
+import lv.initex.race.Observer;
+import lv.initex.race.ViewListener;
 import lv.initex.race.singleRace.services.AddListener;
-import lv.initex.race.singleRace.services.DeleteSingleRaceRow;
-import lv.initex.race.singleRace.services.InitSingleRaceModel;
-import lv.initex.race.singleRace.services.UpdateValuesSingleRace;
-import lv.initex.race.singleRace.services.timer.SingleTimer;
+import lv.initex.race.singleRace.services.SingleRaceServiceDispatcher;
+import lv.initex.verifyMcuData.Observable;
+import lv.initex.verifyMcuData.VerifyMcuDataModelFinish;
+import lv.initex.verifyMcuData.VerifyMcuDataModelStart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
-public class SingleRaceController {
+public class SingleRaceController implements Observer {
+    private List<Observable> observableList = new ArrayList<>();
 
     @Autowired
     private SingleRaceView view;
 
     @Autowired
-    private InitCBoxEvent initCBoxEvent;
+    private SingleRaceServiceDispatcher service;
 
     @Autowired
-    private InitCBoxSubEvent initCBoxSubEvent;
+    private GenericServiceDispatcher genericService;
 
     @Autowired
-    private InitSingleRaceModel initSingleRaceModel;
+    private VerifyMcuDataModelStart startModel;
 
     @Autowired
-    private UpdateValuesSingleRace update;
-
-    @Autowired
-    private DeleteSingleRaceRow deleteRow;
-
-    @Autowired
-    private SingleTimer singleTimer;
+    private VerifyMcuDataModelFinish finishModel;
 
     @PostConstruct
     public void init() {
         view.formatTable(view.getModel());
-        view.getModel().addTableModelListener(tme -> update.execute(tme, view));
-        view.getComboBoxEvent().addActionListener(e -> initCBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
-        view.getComboBoxSubEvent().addActionListener(e -> singleTimer.timer(view));
-        view.getBtnDeleteRow().addActionListener(e -> deleteRow.execute(view));
+        view.getModel().addTableModelListener(tme -> service.updateValuesSingleRace(tme, view));
+        view.getComboBoxEvent().addActionListener(e -> genericService.initCBoxSubEvent(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
+        view.getComboBoxSubEvent().addActionListener(e -> startModel.registerObserver(this));
+        view.getComboBoxSubEvent().addActionListener(e -> finishModel.registerObserver(this));
+        view.getComboBoxSubEvent().addActionListener(e -> service.initSingleRaceModel(false, view));
+        view.getBtnDeleteRow().addActionListener(e -> service.deleteSingleRaceRow(view));
+        observableList.add(startModel);
+        observableList.add(finishModel);
+        view.getFrame().addInternalFrameListener(new ViewListener(observableList, this));
         AddListener.addListener(view.getDataTable());
     }
 
@@ -62,7 +65,7 @@ public class SingleRaceController {
         view.getComboBoxSubEvent().removeAllItems();
         view.getModel().setRowCount(0);
 
-        initCBoxEvent.init(view.getComboBoxEvent());
+        genericService.initCBoxEvent(view.getComboBoxEvent());
 
         Icon icon = new ImageIcon(getClass().getResource("/images/icons_small.png"));
         view.getFrame().setFrameIcon(icon);
@@ -75,6 +78,11 @@ public class SingleRaceController {
         int width = (desktopSize.width - jInternalFrameSize.width) / 2;
         view.getFrame().setLocation(width, 300);
         desktop.add(view.getFrame());
+    }
+
+    @Override
+    public void update() {
+        service.singleProcessMCUData(view);
     }
 }
 

@@ -62,32 +62,32 @@
 	<columnHeader>
 		<band height="28" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="-13" y="0" width="825" height="28" backcolor="#E8F4FF" uuid="6f6c2ff3-b07a-402c-b344-41a07942969d"/>
+				<reportElement mode="Opaque" x="0" y="0" width="802" height="28" backcolor="#E8F4FF" uuid="6f6c2ff3-b07a-402c-b344-41a07942969d"/>
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-12" y="14" width="25" height="14" backcolor="#FFFFFF" uuid="464846ad-af64-4e08-812e-b70cdd21e18f">
+				<reportElement x="0" y="14" width="26" height="14" backcolor="#FFFFFF" uuid="464846ad-af64-4e08-812e-b70cdd21e18f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6fb9c64-6efa-4db8-95a7-ce5c0a057da8"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Rank]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="13" y="14" width="114" height="14" uuid="d3e2bd7d-2349-4c00-83fb-2cb4df890c53">
+				<reportElement x="26" y="14" width="114" height="14" uuid="d3e2bd7d-2349-4c00-83fb-2cb4df890c53">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e8a4925-80a1-4233-9cfc-eeeb8b721afc"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[Competitor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="127" y="14" width="18" height="14" uuid="a07e1b41-1c79-43b5-8ca2-c4e0adf3e968">
+				<reportElement x="140" y="14" width="18" height="14" uuid="a07e1b41-1c79-43b5-8ca2-c4e0adf3e968">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e42ee1c-0e30-4057-8805-31c12042c7f6"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[BIB]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="145" y="14" width="32" height="14" uuid="1348ff94-1eec-47d4-a8b1-5a05712bde6e">
+				<reportElement x="158" y="14" width="32" height="14" uuid="1348ff94-1eec-47d4-a8b1-5a05712bde6e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="933ebb4e-46b4-43ad-8eb7-30b2c37e5502"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -101,28 +101,28 @@
 				<text><![CDATA[Race time]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="177" y="14" width="30" height="14" uuid="13baba1c-2084-4a2d-8e13-3631d3e9db9a">
+				<reportElement x="190" y="14" width="30" height="14" uuid="13baba1c-2084-4a2d-8e13-3631d3e9db9a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c1c6ef5-d038-4e06-83fe-c8a638539648"/>
 				</reportElement>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Year]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="207" y="14" width="93" height="14" uuid="93a8a5e8-8bd8-4522-a8c9-f410ec392ec4">
+				<reportElement x="220" y="14" width="93" height="14" uuid="93a8a5e8-8bd8-4522-a8c9-f410ec392ec4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9473ee52-151f-44e4-ba7b-73b3fbe9a427"/>
 				</reportElement>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Club]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="753" y="14" width="52" height="14" uuid="65256c49-ed81-42bc-91cf-cd422f2518bd">
+				<reportElement x="750" y="14" width="52" height="14" uuid="65256c49-ed81-42bc-91cf-cd422f2518bd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0676b09-608c-4a45-80d3-6b18e668a37a"/>
 				</reportElement>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
 				<text><![CDATA[Final result]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="300" y="14" width="36" height="14" uuid="e0b8ca7d-e12d-403b-85c1-4b8e8b157f34">
+				<reportElement x="313" y="14" width="36" height="14" uuid="e0b8ca7d-e12d-403b-85c1-4b8e8b157f34">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9c94c5d7-a772-40a8-880a-e34340497c46"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
@@ -164,7 +164,7 @@
 				<text><![CDATA[Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="370" y="0" width="130" height="14" uuid="2f3b14d3-3a04-4555-82ab-9e7de1b9b67f"/>
+				<reportElement x="370" y="0" width="131" height="14" uuid="2f3b14d3-3a04-4555-82ab-9e7de1b9b67f"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[Heat 1]]></text>
 			</staticText>
@@ -178,7 +178,7 @@
 	<detail>
 		<band height="14" splitType="Stretch">
 			<textField>
-				<reportElement x="-13" y="0" width="26" height="14" uuid="98a6b58e-ca7c-4af6-b7c6-6a5bfe2f3836">
+				<reportElement x="0" y="0" width="26" height="14" uuid="98a6b58e-ca7c-4af6-b7c6-6a5bfe2f3836">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6fb9c64-6efa-4db8-95a7-ce5c0a057da8"/>
 				</reportElement>
 				<box>
@@ -190,7 +190,7 @@
 				<textFieldExpression><![CDATA[$F{rank}>0?$F{rank}:" "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="13" y="0" width="114" height="14" uuid="ba50d749-9401-48a9-8fb3-72d0bdae583f">
+				<reportElement x="26" y="0" width="114" height="14" uuid="ba50d749-9401-48a9-8fb3-72d0bdae583f">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e8a4925-80a1-4233-9cfc-eeeb8b721afc"/>
 				</reportElement>
 				<box>
@@ -202,7 +202,7 @@
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.competitorName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="127" y="0" width="18" height="14" uuid="66fd3a6a-8795-41c5-85b6-59fdc57081d8">
+				<reportElement x="140" y="0" width="18" height="14" uuid="66fd3a6a-8795-41c5-85b6-59fdc57081d8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e42ee1c-0e30-4057-8805-31c12042c7f6"/>
 				</reportElement>
 				<box>
@@ -214,7 +214,7 @@
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.bib}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="145" y="0" width="32" height="14" uuid="cf8f4c30-37ee-47b9-9591-bc3c684ca77d">
+				<reportElement x="158" y="0" width="32" height="14" uuid="cf8f4c30-37ee-47b9-9591-bc3c684ca77d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="933ebb4e-46b4-43ad-8eb7-30b2c37e5502"/>
 				</reportElement>
 				<box>
@@ -265,26 +265,26 @@
 				<textFieldExpression><![CDATA[$F{penaltyTotalHeatOne}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="177" y="0" width="30" height="14" uuid="a408adde-d7d6-44ea-b14d-7c96a0702516">
+				<reportElement x="190" y="0" width="30" height="14" uuid="a408adde-d7d6-44ea-b14d-7c96a0702516">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c1c6ef5-d038-4e06-83fe-c8a638539648"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.birthYear}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="207" y="0" width="93" height="14" uuid="95c6ff5d-eb13-4d1f-8a1c-26b715a3bd83">
+				<reportElement x="220" y="0" width="93" height="14" uuid="95c6ff5d-eb13-4d1f-8a1c-26b715a3bd83">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9473ee52-151f-44e4-ba7b-73b3fbe9a427"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.club}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="753" y="0" width="52" height="14" uuid="63ff1091-f46b-4543-a648-de105404f638">
+				<reportElement x="750" y="0" width="52" height="14" uuid="63ff1091-f46b-4543-a648-de105404f638">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0676b09-608c-4a45-80d3-6b18e668a37a"/>
 				</reportElement>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{total}.equals(new BigDecimal(8888))?"DNF":($F{total}.equals(new BigDecimal(9999))?"DNS":($F{total}.equals(new BigDecimal(10000))?"DSQR":$F{total}))]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="300" y="0" width="36" height="14" uuid="19fb4d01-8019-4668-835d-66245718837b">
+				<reportElement x="313" y="0" width="36" height="14" uuid="19fb4d01-8019-4668-835d-66245718837b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9c94c5d7-a772-40a8-880a-e34340497c46"/>
 				</reportElement>
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.country}]]></textFieldExpression>

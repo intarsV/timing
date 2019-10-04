@@ -3,28 +3,31 @@ package lv.initex.verifyMcuData.services;
 import lv.initex.database.VerifyMcuDataRepository;
 import lv.initex.domain.VerifyMcuData;
 import lv.initex.verifyMcuData.VerifyMcuDataView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.event.TableModelEvent;
 import java.util.Vector;
 
-@Service
 public class UpdateStart {
 
-    @Autowired
-    private VerifyMcuDataRepository database;
-
-    public void execute(TableModelEvent tme, VerifyMcuDataView view) {
+    public void execute(TableModelEvent tme, VerifyMcuDataView view, VerifyMcuDataRepository database) {
         if (tme.getType() == TableModelEvent.UPDATE) {
             int i = view.getTableStart().getSelectedRow();
             if (i != -1) {
                 Vector row = (Vector) view.getModelStart().getDataVector().elementAt(i);
                 VerifyMcuData verifyMcuData = new VerifyMcuData(row);
-                database.updateStartLine(verifyMcuData);
+                final int EXCLUDED = 333;
+                final boolean isExcluded = verifyMcuData.getBib() == EXCLUDED;
+                if (isExcluded) {
+                    verifyMcuData.setDone(true);
+                }
+                database.update(verifyMcuData);
                 view.getModelStart().removeRow(i);
+                view.getModelStart().notifyObservers();
             }
+
         }
     }
-
 }
+
+
+

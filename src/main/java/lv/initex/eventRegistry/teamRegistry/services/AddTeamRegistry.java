@@ -3,24 +3,12 @@ package lv.initex.eventRegistry.teamRegistry.services;
 import lv.initex.database.TeamEventRegistryRepository;
 import lv.initex.domain.EventTeamRegistry;
 import lv.initex.eventRegistry.teamRegistry.EventTeamRegistryView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class AddTeamRegistry {
 
-    @Autowired
-    private TeamEventRegistryRepository database;
-
-    @Autowired
-    private EventTeamRegistryView view;
-
-    @Autowired
-    private InitEventTeamRegistryModel refreshModel;
-
-    public void execute() {
+    public void execute(EventTeamRegistryView view, TeamEventRegistryRepository database) {
         List<Object> valueList = GetObjectsFromCBoxesTeam.getObjects(view);
 //                Arrays.asList(getObject()
 //                , getCompetitorOneObjectFromSelection()
@@ -36,7 +24,7 @@ public class AddTeamRegistry {
         EventTeamRegistry eventTeamRegistry = new EventTeamRegistry(valueList);
         database.saveEventTeamRegistry(eventTeamRegistry);
         GenerateNextBibTeam.generateNextBib(view);
-        refreshModel.init();
+        InitEventTeamRegistryModel.init(view, database);
         view.getComboBoxCompetitorOne().setSelectedIndex(-1);
         view.getComboBoxCompetitorTwo().setSelectedIndex(-1);
         view.getComboBoxCompetitorThree().setSelectedIndex(-1);

@@ -4,18 +4,13 @@ import lv.initex.Error;
 import lv.initex.database.SingleEventRegistryRepository;
 import lv.initex.domain.CompetitionEvent;
 import lv.initex.domain.EventSingleRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
-public class UpdateActionduplicateBibRule {
 
-    @Autowired
-    private SingleEventRegistryRepository database;
+public class UpdateDuplicateBibRule {
 
-    public Optional<Error> execute(EventSingleRegistry eventSingleRegistry) {
+    public Optional<Error> execute(EventSingleRegistry eventSingleRegistry, SingleEventRegistryRepository database) {
 
         Long eventSingleRegistryId=eventSingleRegistry.getId();
         CompetitionEvent competitionEvent=eventSingleRegistry.getCompetitionEvent();

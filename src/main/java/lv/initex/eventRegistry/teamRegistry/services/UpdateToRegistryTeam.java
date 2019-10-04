@@ -5,22 +5,10 @@ import lv.initex.domain.EventTeamRegistry;
 import lv.initex.eventRegistry.teamRegistry.EventTeamRegistryView;
 import lv.initex.genericServices.GetObjectFromCBoxCompetitor;
 import lv.initex.genericServices.GetObjectFromCBoxTeamBoatClass;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
 public class UpdateToRegistryTeam {
 
-    @Autowired
-    private EventTeamRegistryView view;
-
-    @Autowired
-    private TeamEventRegistryRepository database;
-
-    @Autowired
-    private InitEventTeamRegistryModel refreshModel;
-
-    public void execute() {
+    public void execute(EventTeamRegistryView view, TeamEventRegistryRepository database) {
         int row = view.getResultTable().getSelectedRow();
         if (row > -1) {
             Long searchId = Long.valueOf(view.getModel().getValueAt(row, 0).toString());
@@ -36,7 +24,7 @@ public class UpdateToRegistryTeam {
             //  if (errors.isEmpty()) {
             database.updateEventTeamRegistry(eventTeamRegistry);
             GenerateNextBibTeam.generateNextBib(view);
-            refreshModel.init();
+            InitEventTeamRegistryModel.init(view, database);
 
             view.getComboBoxCompetitorOne().setSelectedIndex(-1);
             view.getComboBoxCompetitorTwo().setSelectedIndex(-1);

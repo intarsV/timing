@@ -1,9 +1,7 @@
 package lv.initex.verifyMcuData;
 
 import lv.initex.mainWindow.MainWindowView;
-import lv.initex.verifyMcuData.services.InitMcuModel;
-import lv.initex.verifyMcuData.services.UpdateFinish;
-import lv.initex.verifyMcuData.services.UpdateStart;
+import lv.initex.verifyMcuData.services.VerifyMCuServiceDispatcher;
 import lv.initex.verifyMcuData.services.timer.McuTimer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,23 +17,16 @@ public class VerifyMcuDataController {
     private VerifyMcuDataView view;
 
     @Autowired
-    private UpdateStart updateStart;
-
-    @Autowired
-    private UpdateFinish updateFinish;
+    private VerifyMCuServiceDispatcher service;
 
     @Autowired
     private McuTimer timer;
 
-    @Autowired
-    private InitMcuModel InitMcuModel;
-
     @PostConstruct
     public void init() {
         view.formatTables();
-        view.getModelStart().addTableModelListener(tme -> updateStart.execute(tme, view));
-        view.getModelFinish().addTableModelListener(tme -> updateFinish.execute(tme, view));
-
+        view.getModelStart().addTableModelListener(tme -> service.updateStart(tme, view));
+        view.getModelFinish().addTableModelListener(tme -> service.updateFinish(tme, view));
     }
 
     public void execute() {
@@ -48,8 +39,8 @@ public class VerifyMcuDataController {
     }
 
     private void initAcceptIncomingView() {
-        InitMcuModel.init(true, view);
-        InitMcuModel.init(false, view);
+        service.initMcuModel(true, view);
+        service.initMcuModel(false, view);
         view.getFrame().setVisible(true);
 
         JDesktopPane desktop = MainWindowView.getDesktop();

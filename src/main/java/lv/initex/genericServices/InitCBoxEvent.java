@@ -3,19 +3,14 @@ package lv.initex.genericServices;
 import lv.initex.database.GenericServicesRepository;
 import lv.initex.domain.ComboBoxItem;
 import lv.initex.domain.CompetitionEvent;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
+
 public class InitCBoxEvent {
 
-    @Autowired
-    private GenericServicesRepository database;
-
-    public void init(JComboBox cBoxEvent ) {
+    public void init(JComboBox cBoxEvent, GenericServicesRepository database) {
         List<CompetitionEvent> eventList = database.eventList();
         try {
             cBoxEvent.removeAllItems();

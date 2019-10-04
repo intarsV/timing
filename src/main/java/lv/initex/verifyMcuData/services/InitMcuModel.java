@@ -3,20 +3,14 @@ package lv.initex.verifyMcuData.services;
 import lv.initex.database.VerifyMcuDataRepository;
 import lv.initex.domain.VerifyMcuData;
 import lv.initex.verifyMcuData.VerifyMcuDataView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 
-@Service
 public class InitMcuModel {
 
-    @Autowired
-    private VerifyMcuDataRepository database;
-
-    public void init(boolean forStart, VerifyMcuDataView view) {
+    public void init(boolean forStart, VerifyMcuDataView view, VerifyMcuDataRepository database) {
         if (forStart) {
             try {
                 view.getModelStart().setRowCount(0);

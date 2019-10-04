@@ -1,11 +1,14 @@
 package lv.initex.verifyMcuData;
 
+import lv.initex.race.Observer;
 import org.springframework.stereotype.Component;
 
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
 
 @Component
-public class VerifyMcuDataModelStart extends DefaultTableModel {
+public class VerifyMcuDataModelStart extends DefaultTableModel implements Observable {
+    private ArrayList<Observer> observers = new ArrayList<>();
 
     public static final Object[] TABLE_HEADER = {"Id", "BIB", "Time", "Unit_Id", "Sub_event", "Done", "Accept"};
 
@@ -54,4 +57,22 @@ public class VerifyMcuDataModelStart extends DefaultTableModel {
         }
     }
 
+    @Override
+    public void registerObserver(Observer observer) {
+        if(!observers.contains(observer)){
+        observers.add(observer);
+        }
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer ob : observers) {
+            ob.update();
+        }
+    }
 }

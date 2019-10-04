@@ -13,16 +13,9 @@ import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
 public class AddRaceConfig {
 
-    @Autowired
-    private RaceConfigRepository database;
-
-    @Autowired
-    private InitRaceConfigModel initRaceConfigModel;
-
-    public void execute(RaceConfigView view) {
+    public void execute(RaceConfigView view,RaceConfigRepository database) {
         if (view.getComboBoxEvent().getSelectedIndex() > 0 && view.getComboBoxClass().getSelectedIndex() > 0) {
             CompetitionEvent selectedEvent = GetObjectFromCBoxEvent.getObject(view.getComboBoxEvent());
             SingleBoatClass selectedSingleBoatClass = GetObjectFromCBoxSingleBoatClass.getObject(view.getComboBoxClass());
@@ -33,7 +26,7 @@ public class AddRaceConfig {
                     , view.getTextFieldSf().getText());
             RaceConfig raceConfig = new RaceConfig(valueList);
             database.addRaceConfig(raceConfig);
-            initRaceConfigModel.init(view);
+            InitRaceConfigModel.init(view,database);
             resetTextBoxes(view);
         }
     }

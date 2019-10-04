@@ -9,7 +9,6 @@ import lv.initex.genericServices.GetObjectFromCBoxGroup;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class GetObjectsFromCBoxesSingle {
 
     public static List<Object> getObjects(EventSingleRegistryView view) {

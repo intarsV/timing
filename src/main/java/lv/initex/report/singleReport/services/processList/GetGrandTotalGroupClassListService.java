@@ -17,7 +17,7 @@ public class GetGrandTotalGroupClassListService {
     public static void generateReport(List<RaceResultList> list, CompetitionEvent event) {
         String reportUrlOneAndFour = "/reportTemplates/GrandTotalMergedGroupList.jasper";
         String reportUrl = "/reportTemplates/GrandTotalGroup.jasper";
-        String reportUrlU18OneAndFour = "/reportTemplates/GrandTotalMergedGroupList.jasper";
+        String reportUrlU18OneAndFour = "/reportTemplates/GrandTotalMergedGroupU18List.jasper";
         String reportUrlU18 = "/reportTemplates/GrandTotalU18.jasper";
         process(list, event, reportUrlOneAndFour, reportUrl);
         process(list, event, reportUrlU18OneAndFour, reportUrlU18);

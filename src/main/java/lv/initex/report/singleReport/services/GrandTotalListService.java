@@ -34,7 +34,7 @@ public class GrandTotalListService {
                 //for single boat class
                 List<RaceResultList> list = processResultsService.process(event, boatClass);
                 GetGrandTotalClassListService.process(list, event);
-            }else{
+            } else {
                 //for all boat classes
             }
         }

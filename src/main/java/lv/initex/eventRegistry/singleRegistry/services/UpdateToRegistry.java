@@ -5,30 +5,22 @@ import lv.initex.database.SingleEventRegistryRepository;
 import lv.initex.domain.EventSingleRegistry;
 import lv.initex.eventRegistry.singleRegistry.EventSingleRegistryView;
 import lv.initex.eventRegistry.singleRegistry.validation.EventSingleRegistryUpdateValidator;
-import lv.initex.genericServices.GetObjectFromCBoxSingleBoatClass;
+import lv.initex.eventRegistry.singleRegistry.validation.EventSingleRegistryUpdateValidatorImpl;
 import lv.initex.genericServices.GetObjectFromCBoxCompetitor;
 import lv.initex.genericServices.GetObjectFromCBoxGroup;
+import lv.initex.genericServices.GetObjectFromCBoxSingleBoatClass;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
+
 public class UpdateToRegistry {
-    @Autowired
-    private EventSingleRegistryView view;
 
-    @Autowired
-    private SingleEventRegistryRepository database;
 
-    @Autowired
-    private EventSingleRegistryUpdateValidator updateValidator;
+    private EventSingleRegistryUpdateValidator updateValidator=new EventSingleRegistryUpdateValidatorImpl();
 
-    @Autowired
-    private InitEventSingleRegistryModel refreshModel;
-
-    public void execute() {
+    public void execute(EventSingleRegistryView view,SingleEventRegistryRepository database) {
         int row = view.getTable().getSelectedRow();
         if (row > -1) {
             Long searchId = Long.valueOf(view.getModel().getValueAt(row, 0).toString());
@@ -38,12 +30,12 @@ public class UpdateToRegistry {
             eventSingleRegistry.setCompetitor(GetObjectFromCBoxCompetitor.getObject(view.getComboBoxCompetitor()));
             eventSingleRegistry.setBib(Integer.valueOf(view.getTextFieldBIB().getText()));
 
-            List<Error> errors = updateValidator.validate(eventSingleRegistry);
+            List<Error> errors = updateValidator.validate(eventSingleRegistry,database);
 
             if (errors.isEmpty()) {
                 database.updateEventSingleRegistry(eventSingleRegistry);
                 GenerateNextBib.generateNextBib(view);
-                refreshModel.init();
+                InitEventSingleRegistryModel.init(view,database);
                 view.getComboBoxCompetitor().setSelectedIndex(-1);
             } else {
                 JOptionPane.showMessageDialog(null, errors.get(0).getDescription());

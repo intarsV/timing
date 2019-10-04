@@ -1,11 +1,9 @@
 package lv.initex.raceConfig;
 
-import lv.initex.genericServices.InitCBoxEvent;
-import lv.initex.genericServices.InitCBoxSingleBoatClass;
+import lv.initex.genericServices.GenericServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
-import lv.initex.raceConfig.services.AddRaceConfig;
-import lv.initex.raceConfig.services.DeleteRaceConfig;
 import lv.initex.raceConfig.services.InitRaceConfigModel;
+import lv.initex.raceConfig.services.RaceConfigServiceDispatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,26 +18,17 @@ public class RaceConfigController {
     private RaceConfigView view;
 
     @Autowired
-    private InitCBoxEvent initCBoxEvent;
+    private GenericServiceDispatcher genericService;
 
     @Autowired
-    private InitCBoxSingleBoatClass initCBoxSingleBoatClass;
-
-    @Autowired
-    private AddRaceConfig add;
-
-    @Autowired
-    private DeleteRaceConfig delete;
-
-    @Autowired
-    private InitRaceConfigModel initRaceConfigModel;
+    private RaceConfigServiceDispatcher service;
 
     @PostConstruct
     public void init() {
         view.formatTable();
-        view.getComboBoxEvent().addActionListener(e -> initRaceConfigModel.init(view));
-        view.getBtnInsert().addActionListener(e -> add.execute(view));
-        view.getBtnDelete().addActionListener(e -> delete.execute(view));
+        view.getComboBoxEvent().addActionListener(e -> service.initRaceConfigModel(view));
+        view.getBtnInsert().addActionListener(e -> service.addRaceConfig(view));
+        view.getBtnDelete().addActionListener(e -> service.deleteRaceConfig(view));
     }
 
     public void execute() {
@@ -54,8 +43,8 @@ public class RaceConfigController {
         Icon icon = new ImageIcon(getClass().getResource("/images/icons_small.png"));
         view.getFrame().setFrameIcon(icon);
 
-        initCBoxEvent.init(view.getComboBoxEvent());
-        initCBoxSingleBoatClass.init(view.getComboBoxClass());
+        genericService.initCBoxEvent(view.getComboBoxEvent());
+        genericService.initCBoxSingleBoatClass(view.getComboBoxClass());
 
         view.getFrame().setVisible(true);
 

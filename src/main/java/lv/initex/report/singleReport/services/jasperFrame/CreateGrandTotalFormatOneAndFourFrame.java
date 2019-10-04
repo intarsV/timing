@@ -9,7 +9,9 @@ import net.sf.jasperreports.view.JRViewer;
 import javax.swing.*;
 import java.awt.*;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CreateGrandTotalFormatOneAndFourFrame {
 
@@ -19,6 +21,8 @@ public class CreateGrandTotalFormatOneAndFourFrame {
             JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);
             JasperPrint jasperPrint = null;
 
+//            Map<String, Object> parameters = new HashMap<String, Object>();
+//            parameters.put("Logo",logo);
             jasperPrint = JasperFillManager.fillReport(reportFile, null, jrDataSource);
 
             JInternalFrame frame = new JInternalFrame("GrandTotal");

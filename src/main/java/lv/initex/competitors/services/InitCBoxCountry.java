@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import javax.swing.*;
 import java.util.List;
 
-@Service
+//@Service
 public class InitCBoxCountry {
 
-    @Autowired
-    private CompetitorRepository database;
+//    @Autowired
+//    private CompetitorRepository database;
 
-    public void initComboBoxCountry(CompetitorsView view) {
+    public void initComboBoxCountry(CompetitorsView view,CompetitorRepository database) {
         try {
             view.getComboBoxCountry().removeAllItems();
             List<Country> countryList = database.countryList();

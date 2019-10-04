@@ -3,19 +3,14 @@ package lv.initex.genericServices;
 import lv.initex.database.GenericServicesRepository;
 import lv.initex.domain.ComboBoxItem;
 import lv.initex.domain.Group;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
+
 public class InitCBoxGroup {
 
-    @Autowired
-    private GenericServicesRepository database;
-
-    public void init(JComboBox comboBox) {
+    public void init(JComboBox comboBox, GenericServicesRepository database) {
         try {
             comboBox.removeAllItems();
             List<Group> groupList = database.groupsList();

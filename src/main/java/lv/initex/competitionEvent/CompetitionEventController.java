@@ -1,6 +1,6 @@
 package lv.initex.competitionEvent;
 
-import lv.initex.competitionEvent.services.*;
+import lv.initex.competitionEvent.services.EventServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,26 +16,14 @@ public class CompetitionEventController {
     private CompetitionEventView view;
 
     @Autowired
-    private AddEvent add;
-
-    @Autowired
-    private DeleteEvent delete;
-
-    @Autowired
-    private UpdateEvent update;
-
-    @Autowired
-    private InitEventModel initEventModel;
-
-    @Autowired
-    private InitCBoxFormat initCBoxFormat;
+    private EventServiceDispatcher service;
 
     @PostConstruct
-    public void init(){
+    public void init() {
         view.formatTable();
-        view.getBtnInsert().addActionListener(e -> add.execute(view));
-        view.getBtnDelete().addActionListener(e -> delete.execute(view));
-        view.getModel().addTableModelListener(tme -> update.execute(tme,view));
+        view.getBtnInsert().addActionListener(e -> service.addEvent(view));
+        view.getBtnDelete().addActionListener(e -> service.deleteEvent(view));
+        view.getModel().addTableModelListener(tme -> service.updateEvent(tme, view));
     }
 
     public void execute() {
@@ -47,8 +35,8 @@ public class CompetitionEventController {
     }
 
     private void initEventView() {
-        initEventModel.init(view);
-        initCBoxFormat.initComboBoxFormat(view);
+        service.initModel(view);
+        service.iniCBoxFormat(view);
         Icon icon = new ImageIcon(getClass().getResource("/images/icons_small.png"));
         view.getFrame().setFrameIcon(icon);
 

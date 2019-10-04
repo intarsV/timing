@@ -17,13 +17,17 @@ public class SingleBoatClass {
     @Column(name = "deleted", columnDefinition = "TINYINT", length = 1)
     private boolean deleted;
 
+    @Column(name = "sort_index")
+    private int sortIndex;
+
     public SingleBoatClass() {
     }
 
-    public SingleBoatClass(Long id, String boatClass, boolean deleted) {
+    public SingleBoatClass(Long id, String boatClass, boolean deleted, int sortindex) {
         this.id = id;
         this.boatClass = boatClass;
         this.deleted = deleted;
+        this.sortIndex = sortindex;
     }
 
     public Long getId() {
@@ -48,5 +52,13 @@ public class SingleBoatClass {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public int getSortIndex() {
+        return sortIndex;
+    }
+
+    public void setSortIndex(int sortIndex) {
+        this.sortIndex = sortIndex;
     }
 }

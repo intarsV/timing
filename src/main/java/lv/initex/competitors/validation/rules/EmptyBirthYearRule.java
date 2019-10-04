@@ -1,12 +1,10 @@
 package lv.initex.competitors.validation.rules;
 
 import lv.initex.Error;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
 public class EmptyBirthYearRule {
     public Optional<Error> execute(List valueList) {
 

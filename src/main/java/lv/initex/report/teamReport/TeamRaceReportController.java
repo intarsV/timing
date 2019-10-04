@@ -1,8 +1,6 @@
 package lv.initex.report.teamReport;
 
-import lv.initex.genericServices.InitCBoxEvent;
-import lv.initex.genericServices.InitCBoxSubEvent;
-import lv.initex.genericServices.InitCBoxTeamBoatClass;
+import lv.initex.genericServices.GenericServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
 import lv.initex.report.teamReport.services.PreviewTeamStageResultsService;
 import lv.initex.report.teamReport.services.PreviewTeamStartListService;
@@ -20,13 +18,7 @@ public class TeamRaceReportController {
     private TeamRaceReportView view;
 
     @Autowired
-    private InitCBoxEvent initCBoxEvent;
-
-    @Autowired
-    private InitCBoxSubEvent initCBoxSubEvent;
-
-    @Autowired
-    private InitCBoxTeamBoatClass initCBoxBoatClass;
+    private GenericServiceDispatcher genericService;
 
     @Autowired
     private PreviewTeamStartListService startList;
@@ -39,7 +31,7 @@ public class TeamRaceReportController {
     public void init() {
         view.getBtnStartList().addActionListener(e -> startList.execute());
         view.getBtnHeatResultsList().addActionListener(e -> stageResults.execute());
-        view.getComboBoxEvent().addActionListener(e -> initCBoxSubEvent.init(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
+        view.getComboBoxEvent().addActionListener(e -> genericService.initCBoxSubEvent(view.getComboBoxEvent(), view.getComboBoxSubEvent()));
     }
 
     public void execute() {
@@ -55,8 +47,8 @@ public class TeamRaceReportController {
         view.getFrame().setFrameIcon(icon);
         view.getComboBoxSubEvent().removeAllItems();
 
-        initCBoxEvent.init(view.getComboBoxEvent());
-        initCBoxBoatClass.init(view.getComboBoxClass());
+        genericService.initCBoxEvent(view.getComboBoxEvent());
+        genericService.initCBoxTeamBoatClass(view.getComboBoxClass());
 
         view.getFrame().setVisible(true);
 

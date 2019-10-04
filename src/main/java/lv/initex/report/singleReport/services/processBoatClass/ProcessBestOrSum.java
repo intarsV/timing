@@ -13,7 +13,7 @@ public class ProcessBestOrSum {
         if (format == 1) {
             //process best
             processBest(list);
-        } else if (format == 4) {
+        } else if (format == 4 || format == 7) {
             //process sum
             processSum(list);
         } else if (format == 5) {
@@ -26,7 +26,7 @@ public class ProcessBestOrSum {
             int compare = i.getHeatOneTotal().compareTo(i.getHeatTwoTotal());
             if (compare == 1) {
                 i.setBestH1H2(i.getHeatTwoTotal());
-            } else  {
+            } else {
                 i.setBestH1H2(i.getHeatOneTotal());
             }
         }

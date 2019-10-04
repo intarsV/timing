@@ -5,19 +5,13 @@ import lv.initex.domain.ComboBoxItem;
 import lv.initex.domain.CompetitionEvent;
 import lv.initex.domain.RaceConfig;
 import lv.initex.raceConfig.RaceConfigView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
 public class InitRaceConfigModel {
 
-    @Autowired
-    private RaceConfigRepository database;
-
-    public void init(RaceConfigView view) {
+    public static void init(RaceConfigView view, RaceConfigRepository database) {
         if (view.getComboBoxEvent().getSelectedIndex() > 0) {
             try {
                 view.getModel().setRowCount(0);

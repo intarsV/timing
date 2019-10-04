@@ -16,29 +16,17 @@ public class CompetitorsController {
     private CompetitorsView view;
 
     @Autowired
-    private AddCompetitor add;
-
-    @Autowired
-    private DeleteCompetitor delete;
-
-    @Autowired
-    private UpdateValuesCompetitors update;
-
-    @Autowired
-    private InitCBoxCountry initCBoxCountry;
-
-    @Autowired
-    private InitCompetitorsModel initCompetitorsModel;
+    private CompetitorsServiceDispatcher service;
 
     @PostConstruct
     public void init() {
         view.formatTable();
-        initCompetitorsModel.init(view);
-        initCBoxCountry.initComboBoxCountry(view);
+        service.initModel(view);
+        service.initInitCBoxCountry(view);
 
-        view.getBtnInsert().addActionListener(e -> add.execute(view));
-        view.getBtnDelete().addActionListener(e -> delete.execute(view));
-        view.getCompetitorsTable().getModel().addTableModelListener(tme -> update.execute(tme,view));
+        view.getBtnInsert().addActionListener(e -> service.addCompetitor(view));
+        view.getBtnDelete().addActionListener(e -> service.deleteCompetitor(view));
+        view.getCompetitorsTable().getModel().addTableModelListener(tme -> service.updateCompetitor(tme,view));
     }
 
     public void execute() {

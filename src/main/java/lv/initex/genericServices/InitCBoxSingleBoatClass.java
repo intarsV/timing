@@ -9,13 +9,9 @@ import org.springframework.stereotype.Service;
 import javax.swing.*;
 import java.util.List;
 
-@Service
 public class InitCBoxSingleBoatClass {
 
-    @Autowired
-    private GenericServicesRepository database;
-
-    public void init(JComboBox comboBox) {
+    public void init(JComboBox comboBox, GenericServicesRepository database) {
         try {
             comboBox.removeAllItems();
             List<SingleBoatClass> singleBoatClassList = database.singleBoatClassList();

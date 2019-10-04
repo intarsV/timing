@@ -7,19 +7,14 @@ import lv.initex.domain.TeamRace;
 import lv.initex.genericServices.GetObjectFromCBoxEvent;
 import lv.initex.genericServices.GetObjectFromCBoxSubEvent;
 import lv.initex.race.teamRace.abstractClass.TeamView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
+
 public class InitTeamRaceModel {
 
-    @Autowired
-    private TeamRaceRepository database;
-
-    public void init(boolean isEditMode, TeamView view) {
+    public static void init(boolean isEditMode, TeamView view, TeamRaceRepository database) {
         JComboBox cBoxEvent = view.getComboBoxEvent();
         JComboBox cBoxSubEvent = view.getComboBoxSubEvent();
 

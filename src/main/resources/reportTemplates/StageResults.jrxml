@@ -59,14 +59,14 @@
 	<title>
 		<band height="59" splitType="Stretch">
 			<textField>
-				<reportElement x="80" y="0" width="620" height="30" uuid="a545e72a-0494-4964-b74d-0f57e90595c4"/>
+				<reportElement x="80" y="0" width="632" height="30" uuid="a545e72a-0494-4964-b74d-0f57e90595c4"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitionEvent.eventName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="80" y="29" width="619" height="30" uuid="d4692f23-9e9c-48d3-9d02-a95cda2f5596"/>
+				<reportElement x="80" y="30" width="632" height="29" uuid="d4692f23-9e9c-48d3-9d02-a95cda2f5596"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14"/>
 				</textElement>
@@ -77,7 +77,7 @@
 	<pageHeader>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="190" height="20" uuid="b5b6d08f-a32b-4151-8a3f-9a3d778ee0fa"/>
+				<reportElement x="0" y="0" width="189" height="20" uuid="b5b6d08f-a32b-4151-8a3f-9a3d778ee0fa"/>
 				<textElement>
 					<font size="14"/>
 				</textElement>
@@ -106,14 +106,14 @@
 				<text><![CDATA[Competitor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="139" y="14" width="18" height="16" uuid="a07e1b41-1c79-43b5-8ca2-c4e0adf3e968">
+				<reportElement x="139" y="14" width="25" height="16" uuid="a07e1b41-1c79-43b5-8ca2-c4e0adf3e968">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e42ee1c-0e30-4057-8805-31c12042c7f6"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
 				<text><![CDATA[BIB]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="157" y="14" width="32" height="16" uuid="1348ff94-1eec-47d4-a8b1-5a05712bde6e">
+				<reportElement x="164" y="14" width="36" height="16" uuid="1348ff94-1eec-47d4-a8b1-5a05712bde6e">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="933ebb4e-46b4-43ad-8eb7-30b2c37e5502"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
@@ -314,14 +314,14 @@
 				<text><![CDATA[Gate penalties]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="189" y="14" width="30" height="16" uuid="13baba1c-2084-4a2d-8e13-3631d3e9db9a">
+				<reportElement x="200" y="14" width="26" height="16" uuid="13baba1c-2084-4a2d-8e13-3631d3e9db9a">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c1c6ef5-d038-4e06-83fe-c8a638539648"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<text><![CDATA[Year]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="761" y="14" width="41" height="16" uuid="65256c49-ed81-42bc-91cf-cd422f2518bd">
+				<reportElement x="760" y="14" width="42" height="16" uuid="65256c49-ed81-42bc-91cf-cd422f2518bd">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0676b09-608c-4a45-80d3-6b18e668a37a"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
@@ -346,7 +346,7 @@
 	<detail>
 		<band height="14" splitType="Stretch">
 			<textField>
-				<reportElement x="5" y="0" width="20" height="14" uuid="98a6b58e-ca7c-4af6-b7c6-6a5bfe2f3836">
+				<reportElement x="0" y="0" width="25" height="14" uuid="98a6b58e-ca7c-4af6-b7c6-6a5bfe2f3836">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d6fb9c64-6efa-4db8-95a7-ce5c0a057da8"/>
 				</reportElement>
 				<box>
@@ -376,7 +376,7 @@
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.competitorName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="139" y="0" width="18" height="14" uuid="66fd3a6a-8795-41c5-85b6-59fdc57081d8">
+				<reportElement x="139" y="0" width="25" height="14" uuid="66fd3a6a-8795-41c5-85b6-59fdc57081d8">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5e42ee1c-0e30-4057-8805-31c12042c7f6"/>
 				</reportElement>
 				<box>
@@ -391,7 +391,7 @@
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.bib}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="157" y="0" width="32" height="14" uuid="cf8f4c30-37ee-47b9-9591-bc3c684ca77d">
+				<reportElement x="164" y="0" width="36" height="14" uuid="cf8f4c30-37ee-47b9-9591-bc3c684ca77d">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="933ebb4e-46b4-43ad-8eb7-30b2c37e5502"/>
 				</reportElement>
 				<box>
@@ -767,7 +767,7 @@
 				<textFieldExpression><![CDATA[$F{penaltyList[23]}>0?$F{penaltyList[23]}:" "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="262" y="0" width="41" height="14" uuid="6e0540ee-e124-4250-a38e-7fc72d3263c4">
+				<reportElement x="262" y="0" width="48" height="14" uuid="6e0540ee-e124-4250-a38e-7fc72d3263c4">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5cf8a12f-d965-4ef0-8ff6-7fd651c41846"/>
 				</reportElement>
 				<box>
@@ -782,7 +782,7 @@
 				<textFieldExpression><![CDATA[$F{raceTime}.compareTo(new BigDecimal(0))>0?$F{raceTime}:" "]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="665" y="0" width="46" height="14" uuid="c059ba35-a520-43cb-ac18-ed449329e368">
+				<reportElement x="670" y="0" width="42" height="14" uuid="c059ba35-a520-43cb-ac18-ed449329e368">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5f8b78cd-cc03-4393-b728-43a728ad8dc4"/>
 				</reportElement>
 				<box>
@@ -812,19 +812,19 @@
 				<textFieldExpression><![CDATA[$F{penaltyList[0]}+$F{penaltyList[1]}+$F{penaltyList[2]}+$F{penaltyList[3]}+$F{penaltyList[4]}+$F{penaltyList[5]}+$F{penaltyList[6]}+$F{penaltyList[7]}+$F{penaltyList[8]}+$F{penaltyList[9]}+$F{penaltyList[10]}+$F{penaltyList[11]}+$F{penaltyList[12]}+$F{penaltyList[13]}+$F{penaltyList[14]}+$F{penaltyList[15]}+$F{penaltyList[16]}+$F{penaltyList[17]}+$F{penaltyList[18]}+$F{penaltyList[19]}+$F{penaltyList[20]}+$F{penaltyList[21]}+$F{penaltyList[22]}+$F{penaltyList[23]}>0?$F{penaltyList[0]}+$F{penaltyList[1]}+$F{penaltyList[2]}+$F{penaltyList[3]}+$F{penaltyList[4]}+$F{penaltyList[5]}+$F{penaltyList[6]}+$F{penaltyList[7]}+$F{penaltyList[8]}+$F{penaltyList[9]}+$F{penaltyList[10]}+$F{penaltyList[11]}+$F{penaltyList[12]}+$F{penaltyList[13]}+$F{penaltyList[14]}+$F{penaltyList[15]}+$F{penaltyList[16]}+$F{penaltyList[17]}+$F{penaltyList[18]}+$F{penaltyList[19]}+$F{penaltyList[20]}+$F{penaltyList[21]}+$F{penaltyList[22]}+$F{penaltyList[23]}:""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="189" y="0" width="30" height="14" uuid="a408adde-d7d6-44ea-b14d-7c96a0702516">
+				<reportElement x="200" y="0" width="26" height="14" uuid="a408adde-d7d6-44ea-b14d-7c96a0702516">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0c1c6ef5-d038-4e06-83fe-c8a638539648"/>
 				</reportElement>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.birthYear}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="773" y="0" width="29" height="14" uuid="63ff1091-f46b-4543-a648-de105404f638">
+				<reportElement x="760" y="0" width="42" height="14" uuid="63ff1091-f46b-4543-a648-de105404f638">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0676b09-608c-4a45-80d3-6b18e668a37a"/>
 				</reportElement>
-				<textElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{qualified}==false?" ":"Q"]]></textFieldExpression>
@@ -833,7 +833,7 @@
 				<reportElement x="226" y="0" width="36" height="14" uuid="19fb4d01-8019-4668-835d-66245718837b">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9c94c5d7-a772-40a8-880a-e34340497c46"/>
 				</reportElement>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eventSingleRegistry.competitor.country}]]></textFieldExpression>

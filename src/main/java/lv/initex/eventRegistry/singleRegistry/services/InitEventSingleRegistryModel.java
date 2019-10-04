@@ -5,22 +5,13 @@ import lv.initex.domain.CompetitionEvent;
 import lv.initex.domain.EventSingleRegistry;
 import lv.initex.eventRegistry.singleRegistry.EventSingleRegistryView;
 import lv.initex.genericServices.GetObjectFromCBoxEvent;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
 public class InitEventSingleRegistryModel {
 
-    @Autowired
-    private EventSingleRegistryView view;
-
-    @Autowired
-    private SingleEventRegistryRepository database;
-
-    public void init() {
+    public static void init(EventSingleRegistryView view, SingleEventRegistryRepository database) {
         if (view.getComboBoxEvent().getSelectedIndex() > 0) {
             try {
                 view.getModel().setRowCount(0);

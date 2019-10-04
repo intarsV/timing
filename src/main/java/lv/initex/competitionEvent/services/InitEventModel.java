@@ -3,19 +3,13 @@ package lv.initex.competitionEvent.services;
 import lv.initex.competitionEvent.CompetitionEventView;
 import lv.initex.database.CompetitionEventRepository;
 import lv.initex.domain.CompetitionEvent;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
 public class InitEventModel {
 
-    @Autowired
-    private CompetitionEventRepository database;
-
-    public void init(CompetitionEventView view) {
+    public static void init(CompetitionEventView view, CompetitionEventRepository database) {
         try {
             view.getModel().setRowCount(0);
             List<CompetitionEvent> eventList = database.eventList();

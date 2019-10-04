@@ -3,21 +3,15 @@ package lv.initex.race.singleRace.services;
 import lv.initex.database.SingleRaceRepository;
 import lv.initex.domain.SingleRace;
 import lv.initex.race.singleRace.abstractClass.SingleView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 
-@Service
 public class UpdateValuesSingleRace {
 
-    @Autowired
-    private SingleRaceRepository database;
-
-    public void execute(TableModelEvent tme, SingleView view) {
+    public void execute(TableModelEvent tme, SingleView view, SingleRaceRepository database) {
         JTable table = view.getDataTable();
         DefaultTableModel model = view.getModel();
 

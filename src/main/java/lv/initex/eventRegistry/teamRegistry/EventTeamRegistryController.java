@@ -3,9 +3,7 @@ package lv.initex.eventRegistry.teamRegistry;
 import lv.initex.competitionEvent.CompetitionEventController;
 import lv.initex.competitors.CompetitorsController;
 import lv.initex.eventRegistry.teamRegistry.services.*;
-import lv.initex.genericServices.InitCBoxCompetitors;
-import lv.initex.genericServices.InitCBoxEvent;
-import lv.initex.genericServices.InitCBoxTeamBoatClass;
+import lv.initex.genericServices.GenericServiceDispatcher;
 import lv.initex.mainWindow.MainWindowView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,25 +19,10 @@ public class EventTeamRegistryController {
     private EventTeamRegistryView view;
 
     @Autowired
-    private InitCBoxEvent initEvent;
+    private GenericServiceDispatcher genericService;
 
     @Autowired
-    private InitCBoxCompetitors initCompetitors;
-
-    @Autowired
-    private InitCBoxTeamBoatClass initBoatClass;
-
-    @Autowired
-    private AddTeamRegistry add;
-
-    @Autowired
-    private DeleteFromRegistryTeam delete;
-
-    @Autowired
-    private UpdateToRegistryTeam update;
-
-    @Autowired
-    private InitEventTeamRegistryModel initEventTeamRegistryModel;
+    private TeamServiceDispatcher service;
 
     @Autowired
     private CompetitionEventController eventController;
@@ -50,10 +33,10 @@ public class EventTeamRegistryController {
     @PostConstruct
     public void init() {
         view.formatTable();
-        view.getComboBoxEvent().addActionListener(e -> initEventTeamRegistryModel.init());
-        view.getBtnInsert().addActionListener(e -> add.execute());
-        view.getBtnDelete().addActionListener(e -> delete.execute());
-        view.getBtnUpdate().addActionListener(e -> update.execute());
+        view.getComboBoxEvent().addActionListener(e -> service.initModel(view));
+        view.getBtnInsert().addActionListener(e -> service.addTeamRegistry(view));
+        view.getBtnDelete().addActionListener(e -> service.deleteFromRegistryTeam(view));
+        view.getBtnUpdate().addActionListener(e -> service.updateToRegistryTeam(view));
         view.getResultTable().getSelectionModel().addListSelectionListener(e -> UpdateControlsTeam.update(view));
         view.getBtnAddEvent().addActionListener(e -> eventController.execute());
         view.getBtnAddCompetitor().addActionListener(e -> competitorsController.execute());
@@ -68,11 +51,11 @@ public class EventTeamRegistryController {
     }
 
     private void initSingleRegistryView() {
-        initEvent.init(view.getComboBoxEvent());
-        initBoatClass.init(view.getComboBoxClass());
-        initCompetitors.init(view.getComboBoxCompetitorOne());
-        initCompetitors.init(view.getComboBoxCompetitorTwo());
-        initCompetitors.init(view.getComboBoxCompetitorThree());
+        genericService.initCBoxEvent(view.getComboBoxEvent());
+        genericService.initCBoxTeamBoatClass(view.getComboBoxClass());
+        genericService.initCBoxCompetitors(view.getComboBoxCompetitorOne());
+        genericService.initCBoxCompetitors(view.getComboBoxCompetitorTwo());
+        genericService.initCBoxCompetitors(view.getComboBoxCompetitorThree());
 
         Icon icon = new ImageIcon(getClass().getResource("/images/icons_small.png"));
         view.getFrame().setFrameIcon(icon);

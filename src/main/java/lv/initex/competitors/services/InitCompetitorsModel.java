@@ -3,19 +3,13 @@ package lv.initex.competitors.services;
 import lv.initex.competitors.CompetitorsView;
 import lv.initex.database.CompetitorRepository;
 import lv.initex.domain.Competitor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
 public class InitCompetitorsModel {
 
-    @Autowired
-    private CompetitorRepository database;
-
-    public void init(CompetitorsView view) {
+    public static void init(CompetitorsView view, CompetitorRepository database) {
         try {
             view.getModel().setRowCount(0);
             List<Competitor> competitorList = database.competitorList();

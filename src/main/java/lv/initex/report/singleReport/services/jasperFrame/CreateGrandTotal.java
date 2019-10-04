@@ -15,10 +15,6 @@ public class CreateGrandTotal {
 
     public static void previewList(List<GrandTotalList> list,String reportUrl) {
         try {
-          //  String reportUrl = "src/main/resources/reportTemplates/GrandTotal.jrxml";
-
-//            JasperReport reportFile = JasperCompileManager.compileReport(reportUrl);
-
             InputStream reportFile=JasperReport.class.getResourceAsStream(reportUrl);
 
             JRDataSource jrDataSource = new JRBeanCollectionDataSource(list);

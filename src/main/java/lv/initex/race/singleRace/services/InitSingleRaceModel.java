@@ -7,19 +7,13 @@ import lv.initex.domain.SubEvent;
 import lv.initex.genericServices.GetObjectFromCBoxEvent;
 import lv.initex.genericServices.GetObjectFromCBoxSubEvent;
 import lv.initex.race.singleRace.abstractClass.SingleView;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.util.List;
 
-@Service
 public class InitSingleRaceModel {
 
-    @Autowired
-    private SingleRaceRepository database;
-
-    public void init(boolean isEditMode, SingleView view) {
+    public static void init(boolean isEditMode, SingleView view, SingleRaceRepository database) {
         JComboBox cBoxEvent = view.getComboBoxEvent();
         JComboBox cBoxSubEvent = view.getComboBoxSubEvent();
 

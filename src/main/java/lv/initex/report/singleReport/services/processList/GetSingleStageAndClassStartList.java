@@ -63,6 +63,11 @@ public class GetSingleStageAndClassStartList {
                             .filter(s -> true == (s.isBestH1h2Qualified()))
                             .sorted(Comparator.comparing(RaceResultList::getBestH1H2).reversed())
                             .collect(Collectors.toList());
+                }else if (format == 7) {
+                    filtered = list.stream()
+                            .filter(s -> true == (s.isSumH1H2Qualified()))
+                            .sorted(Comparator.comparing(RaceResultList::getSumH1H2).reversed())
+                            .collect(Collectors.toList());
                 }
                 break;
         }
